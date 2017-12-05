@@ -7,5 +7,14 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <% products.forEach(function(product) { %>
+      <div><%= product.name %></div>
+    <% }); %>
+
+    <form action="/products/create" method="post">
+      <input type="text" placeholder="Enter item" name="name">
+      <input type="text" placeholder="Enter barcode" name="barcode">
+      <button type="submit">Submit</button>
+    </form>
   </body>
 </html>
