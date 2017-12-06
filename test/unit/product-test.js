@@ -14,7 +14,16 @@ describe ('Product Unit Tests', () => {
         expect(product).to.include({name: 'milk'})
         done()
       })
-
     })
+
+    // it('should raise an error if name field is blank', (done) => {
+    //   models.Product.create({
+    //     name: "",
+    //     barcode: 123,
+    //   }).then((product) => {
+    //     console.log(product)
+    //     // expect(product)
+    //   })
+    // })
   })
 })
