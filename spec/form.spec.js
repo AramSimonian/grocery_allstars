@@ -1,6 +1,6 @@
 import faker from "faker";
 import puppeteer from "puppeteer";
-const APP = "localhost:3000";
+// const APP = "localhost:3000";
 
 const product = {
   name: "bobby",
