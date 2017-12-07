@@ -13,12 +13,12 @@ describe ('User Unit Tests', () => {
         firstName: 'John',
         lastName: 'Smith',
         password: '123',
-        email: 'example@email.com'
+        email: 'example@example.com',
       }).then((user) => {
         expect(user).to.include({firstName: 'John'});
         expect(user).to.include({lastName: 'Smith'});
         expect(user).to.include({password: '123'});
-        expect(user).to.include({email: 'example@email.com'});
+        expect(user).to.include({email: 'example@example.com'});
         done();
       })
     })
