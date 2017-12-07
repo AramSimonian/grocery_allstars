@@ -14,6 +14,7 @@ describe ('Product Unit Tests', () => {
         barcode: 123,
       }).then((product) => {
         expect(product).to.include({name: 'milk'})
+        expect(product).to.include({barcode: '123'})
         done()
       })
     })
