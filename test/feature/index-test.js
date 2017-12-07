@@ -1,4 +1,4 @@
-var app = require('../app.js');
+var app = require('../../app.js');
 var morgan = require('morgan');
 bodyParser = require('body-parser');
 var Browser = require('zombie');

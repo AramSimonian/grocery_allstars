@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "test": "mocha --exit"
+    "start": "NODE_ENV=development node ./bin/www",
+    "dev": "NODE_ENV=development ./node_modules/.bin/nodemon ./bin/www",
+    "test": "NODE_ENV=test mocha --exit --recursive"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -13,6 +14,7 @@
     "ejs": "~2.5.7",
     "express": "~4.15.5",
     "morgan": "~1.9.0",
+    "nodemon": "^1.12.5",
     "pg": "^7.4.0",
     "pg-hstore": "^2.3.2",
     "sequel": "^0.3.10",
