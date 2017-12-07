@@ -1,5 +1,5 @@
-const app = require('../app.js');
-const morgan = require('morgan');
+var app = require('../../app.js');
+var morgan = require('morgan');
 bodyParser = require('body-parser');
 const Browser = require('zombie');
 const assert = require('assert');
