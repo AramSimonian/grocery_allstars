@@ -1,16 +1,15 @@
-var app = require('../app.js');
-var morgan = require('morgan');
+const app = require('../app.js');
+const morgan = require('morgan');
 bodyParser = require('body-parser');
-var Browser = require('zombie');
-var assert = require('assert');
-var http = require('http');
-
+const Browser = require('zombie');
+const assert = require('assert');
+const http = require('http');
 
 describe('Index page', function() {
 
   before(function() {
     this.server = http.createServer(app).listen(3000);
-    // initialize the browser using the same port as the test application
+    // // initialize the browser using the same port as the test application
     this.browser = new Browser({
       site: 'http://localhost:3000'
     });
