@@ -2,7 +2,9 @@ const models  = require('../../models');
 const chai = require ('chai');
 const expect = chai.expect;
 // const Product = require('../../models/product')
-
+var colors = require('mocha/lib/reporters/base').colors;
+colors['diff added'] = 32;
+colors['diff removed'] = 31;
 
 describe ('Product Unit Tests', () => {
   describe('#create()', () => {
@@ -16,14 +18,17 @@ describe ('Product Unit Tests', () => {
       })
     })
 
-    // it('should raise an error if name field is blank', (done) => {
-    //   models.Product.create({
-    //     name: "",
-    //     barcode: 123,
-    //   }).then((product) => {
-    //     console.log(product)
-    //     // expect(product)
-    //   })
-    // })
+    it('should raise an error if name field is blank', (done) => {
+        models.Product.create({
+            "name": '',
+            "barcode": '1234'
+        }).then(function (result) {
+            expect.fail();
+            done();
+        }).catch(function (err) {
+            expect(err['name']).to.be.equal('SequelizeValidationError');
+            done();
+        });
+    })
   })
 })
