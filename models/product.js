@@ -6,11 +6,19 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'Name cannot be blank.'
+          msg: 'Name cannot be empty.'
         },
       }
     },
-    barcode: DataTypes.STRING
+    barcode: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: 'Barcode cannot be empty.'
+        },
+      }
+    },
   }, {
     classMethods: {
       associate: function(models) {

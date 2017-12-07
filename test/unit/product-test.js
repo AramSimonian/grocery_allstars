@@ -27,7 +27,20 @@ describe ('Product Unit Tests', () => {
             expect.fail();
             done();
         }).catch(function (err) {
-            expect(err['message']).to.match(/Name cannot be blank./);
+            expect(err['message']).to.match(/Name cannot be empty./);
+            done();
+        });
+    })
+
+    it('should raise an error if barcode field is blank', (done) => {
+        models.Product.create({
+            "name": 'bread',
+            "barcode": ''
+        }).then(function (result) {
+            expect.fail();
+            done();
+        }).catch(function (err) {
+            expect(err['message']).to.match(/Barcode cannot be empty./);
             done();
         });
     })
