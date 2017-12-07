@@ -17,7 +17,7 @@ describe('Signup page', function() {
   });
 
   // load the contact page
-  before(function(done) {
+  beforeEach(function(done) {
     this.browser.visit('/signup', done);
   });
 
@@ -28,5 +28,30 @@ describe('Signup page', function() {
     });
 
   });
+
+  describe('Post', function () {
+
+    // before(function (done) {
+    //     this.browser.visit('/signup', done);
+    // });
+
+
+    before(function (done) {
+
+        this.browser.fill('input[name=firstName]', 'John');
+        this.browser.fill('input[name=lastName]', 'Smith');
+        this.browser.fill('input[name=email]', "example@email.com");
+        this.browser.fill('input[name=password]', "123");
+        this.browser.pressButton('Sign Up');
+        done();
+    });
+
+
+
+    it('should see the products page', function() {
+
+      this.browser.assert.status(200);
+    });
+});
 
 }); //global describe

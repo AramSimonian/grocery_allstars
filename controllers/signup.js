@@ -3,7 +3,13 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('signup');
+});
+
+router.post('/', function(req, res){
+
+    console.log("hey", req.body)
+
 });
 
 module.exports = router;
