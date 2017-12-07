@@ -7,37 +7,28 @@ var http = require('http');
 
 
 describe('Signup page', function() {
-
-  before(function() {
-    this.server = http.createServer(app).listen(3001);
-    // initialize the browser using the same port as the test application
-    this.browser = new Browser({
-      site: 'http://localhost:3000'
-    });
+  beforeEach((done) => {
+      this.server = http.createServer(app).listen(3000);
+      this.browser = new Browser({
+          site: 'http://localhost:3000'
+      });
+      this.browser.visit('/signup', done);
   });
 
-  // load the contact page
-  beforeEach(function(done) {
-    this.browser.visit('/signup', done);
-  });
+  afterEach((done) => {
+    this.server.close();
+    done();
+  })
 
-  describe('Get', function() {
-
-    it('should display page', function() {
+  describe('Get', () => {
+    it('should display page', (done) => {
       assert.ok(this.browser.success);
+      done();
     });
-
   });
 
-  describe('Post', function () {
-
-    // before(function (done) {
-    //     this.browser.visit('/signup', done);
-    // });
-
-
-    before(function (done) {
-
+  describe('Post', () => {
+    before((done) => {
         this.browser.fill('input[name=firstName]', 'John');
         this.browser.fill('input[name=lastName]', 'Smith');
         this.browser.fill('input[name=email]', "example@email.com");
@@ -46,12 +37,10 @@ describe('Signup page', function() {
         done();
     });
 
-
-
-    it('should see the products page', function() {
-
+    it('should see the products page', (done) => {
       this.browser.assert.status(200);
+      done();
     });
-});
+  });
 
 }); //global describe
