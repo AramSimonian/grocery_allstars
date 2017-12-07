@@ -25,12 +25,9 @@ describe('Product feature testing', () => {
             this.browser.fill('input[name=name]', 'Test Name');
             this.browser.fill('input[name=barcode]', '12345');
             this.browser.pressButton('Submit').then( () => {
-              // assert.equal(this.browser.text('#12345'), 'Test Name');
-              assert.equal(this.browser.text('title'), 'Sequelize: Express Example');
+              expect(this.browser.text('div')).to.match(/Test Name/);
               done();
             });
-            // this.browser.assert.text('title', 'Sequelize: Express Example');
-            // expect(this.browser.text('div')).to.match(/Test/);
         })
     })
 
