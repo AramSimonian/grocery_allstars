@@ -26,7 +26,7 @@ describe ('Product Unit Tests', () => {
             expect.fail();
             done();
         }).catch(function (err) {
-            expect(err['name']).to.be.equal('SequelizeValidationError');
+            expect(err['message']).to.match(/Name cannot be blank./);
             done();
         });
     })
