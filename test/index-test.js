@@ -7,16 +7,12 @@ const http = require('http');
 
 describe('Index page', function() {
 
-  before(function() {
+  before(function(done) {
     this.server = http.createServer(app).listen(3000);
     // // initialize the browser using the same port as the test application
     this.browser = new Browser({
       site: 'http://localhost:3000'
     });
-  });
-
-  // load the contact page
-  before(function(done) {
     this.browser.visit('/', done);
   });
 
