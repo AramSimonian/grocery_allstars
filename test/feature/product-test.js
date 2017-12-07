@@ -23,7 +23,9 @@ describe('Product feature testing', () => {
             this.browser.fill('input[name=name]', 'Test Name');
             this.browser.fill('input[name=barcode]', '12345');
             this.browser.pressButton('Submit', done);
-            // expect(this.browser.text())
+            console.log("TEXTTTTTTTTT", this.browser.assert.text);
+            this.browser.assert.text('div', 'Pest')
+            // expect(this.browser.text('div')).to.match(/Test/);
         })
     })
 
