@@ -3,6 +3,7 @@ const Browser = require('zombie');
 const chai = require('chai');
 const expect = chai.expect;
 const http = require('http');
+const assert = chai.assert;
 
 describe('Product feature testing', () => {
     beforeEach((done) => {
@@ -20,11 +21,14 @@ describe('Product feature testing', () => {
 
     describe('Add a product', () =>{
         it('displays added product on page', (done) => {
+            console.log('start of it: ', this.browser.text('title'));
             this.browser.fill('input[name=name]', 'Test Name');
             this.browser.fill('input[name=barcode]', '12345');
-            this.browser.pressButton('Submit', done);
-            console.log("TEXTTTTTTTTT", this.browser.assert.text);
-            this.browser.assert.text('div', 'Pest')
+            this.browser.pressButton('Submit').then( () => {
+              assert.equal(this.browser.text('title'), 'Sequelize: Express Example');
+              done();
+            });
+            // this.browser.assert.text('title', 'Sequelize: Express Example');
             // expect(this.browser.text('div')).to.match(/Test/);
         })
     })
