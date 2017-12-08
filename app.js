@@ -11,6 +11,7 @@ var index = require('./controllers/index');
 var products = require('./controllers/products');
 var users = require('./controllers/users');
 var signup = require('./controllers/signup');
+var login = require('./controllers/login');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use('/', index);
 app.use('/products', products);
 app.use('/users', users);
 app.use('/signup', signup)
+app.use('/login', login)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
