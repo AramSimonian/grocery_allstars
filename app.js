@@ -9,6 +9,7 @@ var index = require('./controllers/index');
 var products = require('./controllers/products');
 var users = require('./controllers/users');
 var signup = require('./controllers/signup');
+var scanners = require('./controllers/scanners');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/scanners', scanners);
 app.use('/products', products);
 app.use('/users', users);
 app.use('/signup', signup)
