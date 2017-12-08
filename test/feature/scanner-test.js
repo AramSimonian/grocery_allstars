@@ -5,13 +5,21 @@ const expect = chai.expect;
 const http = require('http');
 const assert = chai.assert;
 
+const Quagga = require('../../public/javascripts/quagga').default;
+const async = require('async');
+
+
+
+console.log("1", Quagga);
+
 describe('Scanner feature testing', () => {
+  console.log("1", Quagga);
     beforeEach((done) => {
         this.server = http.createServer(app).listen(3000);
         this.browser = new Browser({
             site: 'http://localhost:3000'
         });
-        this.browser.visit('/scanner', done);
+        this.browser.visit('/scanners', done);
     });
 
     afterEach((done) => {
@@ -19,7 +27,9 @@ describe('Scanner feature testing', () => {
         done();
     })
 
-    describe('Add a product', () =>{
+    describe('Scan an item', () =>{
+
+        var baseFolder = "./test/fixtures/";
 
         function generateConfig() {
             return {
@@ -55,32 +65,50 @@ describe('Scanner feature testing', () => {
             }
 
             folder = baseFolder + format.split('_').slice(0, -1).concat(suffix ? [suffix] : []).join('_') + "/";
-
-            it('should decode ' + folder + " correctly", function(done) {
-                async.eachSeries(testSet, function (sample, callback) {
+            const Quagga = require('../../public/javascripts/quagga').default;
+console.log("2", Quagga);
+            it('should decode ' + folder + " correctly", (done) => {
+                async.eachSeries(testSet,  (sample, callback) => {
+                  console.log("3", Quagga);
                     config.src = folder + sample.name;
                     config.readers = readers;
-                    Quagga.decodeSingle(config, function(result) {
+                    Quagga.decodeSingle(config, (result) => {
                         console.log(sample.name);
                         expect(result.codeResult.code).to.equal(sample.result);
                         expect(result.codeResult.format).to.equal(sample.format);
                         callback();
                     });
-                }, function() {
+                }, () =>  {
                     done();
                 });
             });
         }
 
-        it('displays added product on page', (done) => {
-            console.log('start of it: ', this.browser.text('title'));
-            this.browser.fill('input[name=name]', 'Test Name');
-            this.browser.fill('input[name=barcode]', '12345');
-            this.browser.pressButton('Submit').then( () => {
-                expect(this.browser.text('div')).to.match(/Test Name/);
-                done();
+        describe("EAN", function() {
+                var config = generateConfig(),
+                    testSet = [
+                        {"name": "image-001.jpg", "result": "3574660239843"},
+                        {"name": "image-002.jpg", "result": "8032754490297"},
+                        {"name": "image-003.jpg", "result": "4006209700068"},
+                        /* {"name": "image-004.jpg", "result": "9002233139084"}, */
+                        /* {"name": "image-005.jpg", "result": "8004030044005"}, */
+                        {"name": "image-006.jpg", "result": "4003626011159"},
+                        {"name": "image-007.jpg", "result": "2111220009686"},
+                        {"name": "image-008.jpg", "result": "9000275609022"},
+                        {"name": "image-009.jpg", "result": "9004593978587"},
+                        {"name": "image-010.jpg", "result": "9002244845578"}
+                    ];
+
+                testSet.forEach(function(sample) {
+                    sample.format = "ean_13";
+                });
+
+                config.decoder.readers = ['ean_reader'];
+                _runTestSet(testSet, config);
             });
-        })
+
+
+
     })
 
 })
