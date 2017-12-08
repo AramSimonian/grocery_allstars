@@ -1,12 +1,11 @@
 var bCrypt = require('bcrypt-nodejs');
+var models = require('../../models');
 
 
 module.exports = function(passport, user) {
 
-
     var User = user;
     var LocalStrategy = require('passport-local').Strategy;
-
 
     passport.use('local-signup', new LocalStrategy(
 
@@ -22,7 +21,7 @@ module.exports = function(passport, user) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
 
-            User.findOne({
+            models.User.findOne({
                 where: {
                     email: email
                 }
@@ -41,11 +40,11 @@ module.exports = function(passport, user) {
                         {
                             email: email,
                             password: userPassword,
-                            firstname: req.body.firstname,
-                            lastname: req.body.lastname
+                            firstName: req.body.firstName,
+                            lastName: req.body.lastName
                         };
 
-                    User.create(data).then(function(newUser, created) {
+                    models.User.create(data).then(function(newUser, created) {
 
                         if (!newUser) {
                             return done(null, false);
