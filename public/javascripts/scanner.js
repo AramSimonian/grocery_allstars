@@ -102,8 +102,8 @@ $(function () {
                 Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
             }
 
-            if (App.state.inputStream.area) {
-                area = calculateRectFromArea(drawingCanvas, App.state.inputStream.area);
+            if (config.inputStream.area) {
+                area = calculateRectFromArea(drawingCanvas, config.inputStream.area);
                 drawingCtx.strokeStyle = "#0F0";
                 drawingCtx.strokeRect(area.x, area.y, area.width, area.height);
             }
@@ -121,4 +121,3 @@ $(function () {
         $("#result_strip ul.thumbnails").prepend($node);
     });
 })
-
