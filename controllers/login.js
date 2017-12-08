@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function (req, res) {
-    res.send('Add a book');
-  }) ;
+  res.redirect('/');
+}) ;
 
 module.exports = router;

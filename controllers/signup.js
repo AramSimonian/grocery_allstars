@@ -6,9 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('signup');
 });
 
-router.post(function(req, res) {
-       console.log('processing');
-       res.send('processing the signup form!');
-   });
+router.post('/', function(req, res) {
+  res.redirect('/');
+});
 
 module.exports = router;
