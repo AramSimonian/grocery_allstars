@@ -5,15 +5,11 @@ const expect = chai.expect;
 const http = require('http');
 const assert = chai.assert;
 
-const Quagga = require('../../public/javascripts/quagga').default;
+const Quagga = require('../../public/javascripts/quagga');
 const async = require('async');
 
 
-
-console.log("1", Quagga);
-
 describe('Scanner feature testing', () => {
-  console.log("1", Quagga);
     beforeEach((done) => {
         this.server = http.createServer(app).listen(3000);
         this.browser = new Browser({
@@ -29,7 +25,7 @@ describe('Scanner feature testing', () => {
 
     describe('Scan an item', () =>{
 
-        var baseFolder = "./test/fixtures/";
+        var baseFolder = __dirname + "/../fixtures/";
 
         function generateConfig() {
             return {
@@ -49,7 +45,7 @@ describe('Scanner feature testing', () => {
             };
         }
 
-        function _runTestSet(testSet, config) {
+        const  _runTestSet = (testSet, config) => {
             var readers = config.decoder.readers.slice(),
                 format,
                 folder,
@@ -65,15 +61,11 @@ describe('Scanner feature testing', () => {
             }
 
             folder = baseFolder + format.split('_').slice(0, -1).concat(suffix ? [suffix] : []).join('_') + "/";
-            const Quagga = require('../../public/javascripts/quagga').default;
-console.log("2", Quagga);
             it('should decode ' + folder + " correctly", (done) => {
                 async.eachSeries(testSet,  (sample, callback) => {
-                  console.log("3", Quagga);
                     config.src = folder + sample.name;
                     config.readers = readers;
                     Quagga.decodeSingle(config, (result) => {
-                        console.log(sample.name);
                         expect(result.codeResult.code).to.equal(sample.result);
                         expect(result.codeResult.format).to.equal(sample.format);
                         callback();
