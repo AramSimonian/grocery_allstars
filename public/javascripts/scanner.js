@@ -56,6 +56,8 @@ $(function () {
             });
         },
     }
+
+    // Scanner.detachListeners();
     Scanner.init();
 
     function calculateRectFromArea(canvas, area) {
