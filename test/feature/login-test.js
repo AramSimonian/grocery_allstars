@@ -28,7 +28,7 @@ describe('Login page', function() {
   });
 
   describe('Post', () => {
-    before((done) => {
+    beforeEach((done) => {
         this.browser.fill('input[name=email]', "example@email.com");
         this.browser.fill('input[name=password]', "123");
         this.browser.pressButton('Log in');
@@ -36,8 +36,9 @@ describe('Login page', function() {
     });
 
     it('should see the products page', (done) => {
+          done();
       this.browser.assert.status(200);
-      done();
+
     });
   });
 

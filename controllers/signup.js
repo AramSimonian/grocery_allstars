@@ -6,10 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('signup');
 });
 
-router.post('/', function(req, res){
-
-    console.log("hey", req.body)
-
-});
+router.post(function(req, res) {
+       console.log('processing');
+       res.send('processing the signup form!');
+   });
 
 module.exports = router;
