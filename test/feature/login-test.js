@@ -27,20 +27,18 @@ describe('Login page', function() {
     });
   });
 
-  // describe('Post', () => {
-  //   before((done) => {
-  //       this.browser.fill('input[name=firstName]', 'John');
-  //       this.browser.fill('input[name=lastName]', 'Smith');
-  //       this.browser.fill('input[name=email]', "example@email.com");
-  //       this.browser.fill('input[name=password]', "123");
-  //       this.browser.pressButton('Sign Up');
-  //       done();
-  //   });
-  //
-  //   it('should see the products page', (done) => {
-  //     this.browser.assert.status(200);
-  //     done();
-  //   });
-  // });
+  describe('Post', () => {
+    before((done) => {
+        this.browser.fill('input[name=email]', "example@email.com");
+        this.browser.fill('input[name=password]', "123");
+        this.browser.pressButton('Log in');
+        done();
+    });
+
+    it('should see the products page', (done) => {
+      this.browser.assert.status(200);
+      done();
+    });
+  });
 
 }); //global describe
