@@ -8,13 +8,8 @@ router.get('/', function(req, res, next) {
   res.render('login');
 });
 
-router.post('/', function (req, res) {
-  res.redirect('/');
-}) ;
-
 router.post('/', passport.authenticate('local-signin', {
         successRedirect: '/dashboard',
-
         failureRedirect: '/login'
     }
 
