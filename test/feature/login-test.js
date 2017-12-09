@@ -12,7 +12,7 @@ describe('Login page', function() {
       this.browser = new Browser({
           site: 'http://localhost:3000'
       });
-      this.browser.visit('/login', done);
+      this.browser.visit('/auth/login', done);
   });
 
   afterEach((done) => {

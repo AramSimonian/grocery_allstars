@@ -1,10 +1,6 @@
 const models  = require('../../models');
 const chai = require ('chai');
 const expect = chai.expect;
-// const Product = require('../../models/product')
-var colors = require('mocha/lib/reporters/base').colors;
-colors['diff added'] = 32;
-colors['diff removed'] = 3
 
 describe ('User Unit Tests', () => {
   describe('#create()', () => {
