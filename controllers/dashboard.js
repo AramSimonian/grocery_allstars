@@ -17,6 +17,7 @@ router.get('/', isLoggedIn, function(req, res, next) {
 
 function isLoggedIn(req, res, next) {
 
+
  if (req.isAuthenticated()) {
    return next();
  }
