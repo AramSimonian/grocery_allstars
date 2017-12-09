@@ -4,7 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     password: DataTypes.STRING,
-    email: DataTypes.STRING
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: {
+          args: true,
+          msg: 'Not a valid email.'
+        },
+      }
+    }
   }, {
     classMethods: {
       associate: function(models) {
