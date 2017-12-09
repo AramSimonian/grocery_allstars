@@ -1,22 +1,81 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <% products.forEach(function(product) { %>
-      <div id="<%= product.barcode %>"><%= product.name %></div>
-    <% }); %>
+<%+ extend('layout') %>
+<%+ section('content') %>
+<!--<h1><%= title %></h1>-->
+<!--<p>Welcome to <%= title %></p>-->
+<div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+    <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
+        <h2 class="mdl-card__title-text">Products</h2>
+    </div>
+    <div class=" demo-list-container mdl-card__supporting-text mdl-color-text--grey-600">
+        <ul class="demo-list-two mdl-list">
+            <% products.forEach(function(product) { %>
+            <li id="<%= product.barcode %>" class="mdl-list__item mdl-list__item--two-line">
+                <span class="mdl-list__item-primary-content">
+                    <i class="material-icons mdl-list__item-avatar">person</i>
+                    <span><%= product.name %></span>
+                    <span class="mdl-list__item-sub-title">Expires: </span>
+                </span>
+                <span class="mdl-list__item-secondary-content">
+                    <span class="mdl-list__item-secondary-info">In date</span>
+                    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+                </span>
+            </li>
+            <% }); %>
+        </ul>
 
-    <form action="/products/create" method="post">
-      <input type="text" placeholder="Enter item" name="name">
-      <input type="text" placeholder="Enter barcode" name="barcode">
-      <button type="submit">Submit</button>
-    </form>
+        <ul class="collection">
+
+        </ul>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a href="#" class="mdl-button mdl-js-button mdl-js-ripple-effect">Read More</a>
+    </div>
+</div>
+
+<dialog class="mdl-dialog">
+
+        <form action="/products/create" method="post">
+            <div class="mdl-dialog__content">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="name" id="name">
+                    <label class="mdl-textfield__label" for="name">Name</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" name="barcode" id="barcode">
+                    <label class="mdl-textfield__label" for="barcode">Barcode</label>
+                </div>
+            </div>
+            <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                <label id="view-source" for="file-upload" class="f-upload mdl-button mdl-js-button">
+                    Scan
+                </label>
+                <input id="file-upload" type="file" accept="video/*;capture=camcorder"/>
+                <button type="submit" class="mdl-button mdl-js-button">Submit</button>
+                <button type="button" class="mdl-button mdl-js-button close">Cancel</button>
+            </div>
+        </form>
 
 
-  </body>
-</html>
+</dialog>
+
+<a id="view-source" class="show-modal custom-file-upload mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">
+    <i class="material-icons">add</i>
+</a>
+
+
+
+<script>
+    var dialog = document.querySelector('dialog');
+    var showModalButton = document.querySelector('.show-modal');
+    if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+    }
+    showModalButton.addEventListener('click', function() {
+        dialog.showModal();
+    });
+    dialog.querySelector('.close').addEventListener('click', function() {
+        dialog.close();
+    });
+</script>
+
+<%+ endSection %>
