@@ -7,8 +7,8 @@ router.get('/', function(req, res, next) {
   models.Product.findAll({
     // include: [ models.Task ]
   }).then(function(products) {
-    res.render('index', {
-      title: 'Sequelize: Express Example',
+    res.render('dashboard', {
+      title: 'Enter product details',
       products: products
     });
   });
