@@ -14,7 +14,7 @@ var LocalStrategy = require("passport-local");
 var index = require('./controllers/index');
 var products = require('./controllers/products');
 var users = require('./controllers/users');
-
+var dashboard = require('./controllers/dashboard');
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,7 +29,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-var login = require('./controllers/login');
+var login = require('./controllers/auth/login');
 
 
 require('./config/passport/passport.js')(passport, models.user);
@@ -49,7 +49,7 @@ app.use(logger('dev'));
 
 
 
-var signup = require('./controllers/signup');
+var signup = require('./controllers/auth/signup');
 //serialize
 passport.serializeUser(function(user, done) {
 
@@ -84,7 +84,7 @@ app.use('/products', products);
 app.use('/users', users);
 app.use('/signup', signup)
 app.use('/login', login)
-
+app.use('/dashboard', dashboard)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
