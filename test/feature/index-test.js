@@ -25,7 +25,21 @@ describe('Index page', function() {
       assert.ok(this.browser.success);
       done();
     });
+  });
 
+  describe('Post', () => {
+    beforeEach((done) => {
+        this.browser.fill('input[name=email]', "example@email.com");
+        this.browser.fill('input[name=password]', "123");
+        this.browser.pressButton('Log in');
+        done();
+    });
+
+    it('should see the products page', (done) => {
+          done();
+      this.browser.assert.status(200);
+
+    });
   });
 
 }); //global describe
