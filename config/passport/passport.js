@@ -1,4 +1,5 @@
 const bCrypt = require('bcrypt-nodejs');
+var Sequelize = require('sequelize')
 
 module.exports = function (passport, user) {
     const User = user;
@@ -36,28 +37,29 @@ module.exports = function (passport, user) {
                     email: email
                 }
             }).then(function (user) {
-                if (user) {
-                    return done(null, false, {
-                        message: 'That email is already taken'
-                    });
-                } else {
-                    const userPassword = generateHash(password);
-                    const data = {
-                            email: email,
-                            password: userPassword,
-                            firstName: req.body.firstName,
-                            lastName: req.body.lastName
-                        };
+              const userPassword = generateHash(password);
+              const data = {
+                email: email,
+                password: userPassword,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName
+              };
 
-                    User.create(data).then(function (newUser, created) {
-                        if (!newUser) {
-                            return done(null, false);
-                        }
-                        if (newUser) {
-                            return done(null, newUser);
-                        }
-                    });
+              User.create(data).then(function (newUser, created) {
+                if (!newUser) {
+                  return done(null, false);
                 }
+                if (newUser) {
+                  return done(null, newUser);
+                }
+              }).catch(Sequelize.ValidationError, function (err) {
+                // print the error details
+                console.log('ERROR: **** ' + err, req.body.email);
+
+              });
+            }).catch(function (err) {
+              // handle error;
+              console.log('ERROR: **** ', err);
             });
         }
     ));

@@ -3,6 +3,17 @@ const chai = require('chai');
 const expect = chai.expect;
 
 describe('User Unit Tests', () => {
+
+  before(function(done) {
+    models.User.sync({ force : true }) // drops table and re-creates it
+      .then(function() {
+        done(null);
+      })
+      .error(function(error) {
+        done(error);
+      });
+  });
+
   describe('#create()', () => {
     it('should create a new user', (done) => {
       models.User.create({
@@ -25,11 +36,33 @@ describe('User Unit Tests', () => {
         lastName: 'Smith',
         password: '123456',
         email: 'exampleexample.com',
-      }).then(function (result) {
+      }).then((result) => {
         expect.fail();
         done();
-      }).catch(function (err) {
+      }).catch((err) => {
         expect(err['message']).to.match(/Not a valid email./);
+        done();
+      });
+    });
+
+    it('should raise an error if email is not unique', (done) => {
+      const user1 = models.User.create({
+        firstName: 'John',
+        lastName: 'Smith',
+        password: 'password',
+        email: 'testuser1@example.com',
+      });
+
+      models.User.create({
+        firstName: 'John',
+        lastName: 'Smith',
+        password: 'password',
+        email: 'testuser1@example.com',
+      }).then((result) => {
+        expect.fail();
+        done();
+      }).catch((err) => {
+        expect(err['message']).to.match(/That email is already taken/);
         done();
       });
     });
@@ -40,10 +73,10 @@ describe('User Unit Tests', () => {
         lastName: 'Smith',
         password: '12345',
         email: 'test@example.com',
-      }).then(function (result) {
+      }).then((result) => {
         expect.fail();
         done();
-      }).catch(function (err) {
+      }).catch((err) => {
         expect(err['message']).to.match(/Password should be 6 or more charcaters./);
         done();
       });

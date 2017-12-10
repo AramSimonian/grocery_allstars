@@ -8,9 +8,9 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/register', passport.authenticate('local-register', {
-        successRedirect: '/dashboard',
-        failureRedirect: '/auth/register'
-    }
+    successRedirect: '/dashboard',
+    failureRedirect: '/auth/register'
+  }
 
 ));
 
