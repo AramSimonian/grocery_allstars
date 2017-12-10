@@ -11,7 +11,7 @@ describe('Product feature testing', () => {
         this.browser = new Browser({
             site: 'http://localhost:3000'
         });
-        this.browser.visit('/', done);
+        this.browser.visit('/enter', done);
     });
 
     afterEach((done) => {

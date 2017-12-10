@@ -8,7 +8,7 @@ router.post('/create', function(req, res) {
     name: req.body.name,
     barcode: req.body.barcode
   }).then(function() {
-    res.redirect('/');
+    res.redirect('/enter');
   }).catch(Sequelize.ValidationError, function (err) {
       // respond with validation errors
       return res.status(422).send(err.errors);

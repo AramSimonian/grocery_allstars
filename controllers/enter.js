@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   models.Product.findAll({
     // include: [ models.Task ]
   }).then(function(products) {
-    res.render('index', {
+    res.render('enter', {
       title: 'Welcome to Grocery AllStars',
       products: products
     });
