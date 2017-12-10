@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     // include: [ models.Task ]
   }).then(function(products) {
     res.render('index', {
-      title: 'Sequelize: Express Example',
+      title: 'Welcome to Grocery AllStars',
       products: products
     });
   });

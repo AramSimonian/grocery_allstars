@@ -8,7 +8,8 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <% products.forEach(function(product) { %>
-      <div id="<%= product.barcode %>"><%= product.name %></div>
+      <div>Product: <%= product.name %></div>
+      <p>Barcode: <%= product.barcode %></p>
     <% }); %>
 
     <form action="/products/create" method="post">
