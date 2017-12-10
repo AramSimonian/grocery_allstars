@@ -46,18 +46,11 @@ describe('User Unit Tests', () => {
     });
 
     it('should raise an error if email is not unique', (done) => {
-      const user1 = models.User.create({
-        firstName: 'John',
-        lastName: 'Smith',
-        password: 'password',
-        email: 'testuser1@example.com',
-      });
-
       models.User.create({
         firstName: 'John',
         lastName: 'Smith',
         password: 'password',
-        email: 'testuser1@example.com',
+        email: 'example@example.com',
       }).then((result) => {
         expect.fail();
         done();

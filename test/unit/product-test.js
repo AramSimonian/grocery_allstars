@@ -4,6 +4,17 @@ const expect = chai.expect;
 // const Product = require('../../models/product')
 
 describe('Product Unit Tests', () => {
+
+  before(function(done) {
+    models.Product.sync({ force : true }) // drops table and re-creates it
+      .then(function() {
+        done(null);
+      })
+      .error(function(error) {
+        done(error);
+      });
+  });
+
   describe('#create()', () => {
     it('should create a new product', (done) => {
       models.Product.create({
