@@ -27,18 +27,29 @@ describe('Index page', function() {
     });
   });
 
-  describe('Post', () => {
+  describe('Log in form', () => {
     beforeEach((done) => {
-        this.browser.fill('input[name=email]', "example@email.com");
-        this.browser.fill('input[name=password]', "123");
-        this.browser.pressButton('Log in');
-        done();
+      this.browser.fill('input[name=email]', "example@email.com");
+      this.browser.fill('input[name=password]', "123");
+      this.browser.pressButton('Log in');
+      done();
     });
 
     it('should see the products page', (done) => {
-          done();
+      done();
       this.browser.assert.status(200);
+    });
+  });
 
+  describe('Sign in button', () => {
+    beforeEach((done) => {
+      this.browser.pressButton('Sign up');
+      done();
+    });
+
+    it('should take you to the sign up page', (done) => {
+      done();
+      this.browser.assert.text('title', 'Welcome to Grocery AllStars');
     });
   });
 
