@@ -17,18 +17,30 @@ describe('User Products Unit Tests', () => {
   describe('#create()', () => {
     it('should create a new user product record', (done) => {
       dateNow = Date.now();
-      models.UserProducts.create({
-        userId: 1,
-        productId: 1,
-        expiryDate: dateNow,
-        status: '',
-      }).then((userProduct) => {
-        expect(userProduct).to.include({userId: 1});
-        expect(userProduct).to.include({productId: 1});
-        expect(userProduct).to.include({expiryDate: dateNow});
-        expect(userProduct).to.include({status: ''});
+      const user = models.User.create({
+        firstName: 'John',
+        lastName: 'Smith',
+        password: 'password',
+        email: 'example@example.com',
+      }).then((result) => {
+        // user.addProduct();
+        console.log('USER: ', user.products);
         done();
-      })
+      });
+
+      console.log('USER: ', user);
+      // models.UserProducts.create({
+      //   userId: 1,
+      //   productId: 1,
+      //   expiryDate: dateNow,
+      //   status: '',
+      // }).then((userProduct) => {
+      //   expect(userProduct).to.include({userId: 1});
+      //   expect(userProduct).to.include({productId: 1});
+      //   expect(userProduct).to.include({expiryDate: dateNow});
+      //   expect(userProduct).to.include({status: ''});
+      //   done();
+      // })
     });
 
 
