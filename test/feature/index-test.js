@@ -1,31 +1,21 @@
 var app = require('../../app.js');
-var morgan = require('morgan');
 bodyParser = require('body-parser');
-const Browser = require('zombie');
-const assert = require('assert');
-const http = require('http');
+const chai = require('chai')
+const expect = chai.expect;
+const chaiHttp = require('chai-http');
+
+chai.use(chaiHttp);
 
 describe('Index page', function() {
 
-  beforeEach((done) => {
-      this.server = http.createServer(app).listen(3000);
-      this.browser = new Browser({
-          site: 'http://localhost:3000'
-      });
-      this.browser.visit('/', done);
-  });
+ describe('Get', () => {
+   it('should display page', (done) => {
+     chai.request(app).get('/').end((err, res) =>{
+       expect(res).to.have.status(200);
+     });
+     done();
+   });
 
-  afterEach((done) => {
-    this.server.close();
-    done();
-  })
-
-  describe('Get', () => {
-    it('should display page', (done) => {
-      assert.ok(this.browser.success);
-      done();
-    });
-
-  });
+ });
 
 }); //global describe
