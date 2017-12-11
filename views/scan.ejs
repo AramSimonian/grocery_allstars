@@ -1,0 +1,16 @@
+<%+ extend('layout') %>
+<%+ section('content') %>
+<section id="container" class="container">
+    <div class="controls">
+        <fieldset class="input-group">
+            <input type="file" accept="video/*;capture=camcorder"/>
+            <button>Rerun</button>
+        </fieldset>
+    </div>
+    <div id="result_strip">
+        <ul class="thumbnails"></ul>
+    </div>
+    <div id="interactive" class="viewport"></div>
+    <div id="debug" class="detection"></div>
+</section>
+<%+ endSection %>

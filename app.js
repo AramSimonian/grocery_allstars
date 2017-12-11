@@ -29,7 +29,9 @@ app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+var engine = require('ejs-layout');
 app.set('view engine', 'ejs');
+app.engine('ejs', engine.__express);
 
 require('./config/passport/passport.js')(passport, models.User);
 
@@ -60,6 +62,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/scanners', scanners);
 app.use('/products', products);
 app.use('/users', users);
 app.use('/dashboard', dashboard);
