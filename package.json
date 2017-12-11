@@ -8,6 +8,7 @@
     "test": "NODE_ENV=test mocha --exit --recursive"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -15,9 +16,11 @@
     "ejs": "~2.5.7",
     "ejs-layout": "^1.0.15",
     "express": "~4.15.5",
-    "materialize-css": "^0.100.2",
+    "express-session": "^1.15.6",
     "morgan": "~1.9.0",
     "nodemon": "^1.12.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pg": "^7.4.0",
     "pg-hstore": "^2.3.2",
     "quagga": "^0.12.1",

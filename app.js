@@ -1,17 +1,31 @@
 var express = require('express');
 var path = require('path');
+var app = express();
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var session = require('express-session');
+var models = require('./models');
+var LocalStrategy = require("passport-local");
+
 
 var index = require('./controllers/index');
 var products = require('./controllers/products');
 var users = require('./controllers/users');
-var signup = require('./controllers/signup');
-var scanners = require('./controllers/scanners');
+var dashboard = require('./controllers/dashboard');
+var auth = require('./controllers/auth');
 
-var app = express();
+
+//For BodyParser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// For Passport
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,11 +33,31 @@ var engine = require('ejs-layout');
 app.set('view engine', 'ejs');
 app.engine('ejs', engine.__express);
 
+require('./config/passport/passport.js')(passport, models.User);
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
+//serialize
+passport.serializeUser(function(user, done) {
+
+    done(null, user.id);
+
+});
+
+// deserialize user
+passport.deserializeUser(function(id, done) {
+    models.User.findById(id).then(function(user) {
+
+        if (user) {
+            done(null, user.get());
+        } else {
+            done(user.errors, null);
+        }
+    });
+});
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -31,7 +65,8 @@ app.use('/', index);
 app.use('/scanners', scanners);
 app.use('/products', products);
 app.use('/users', users);
-app.use('/signup', signup)
+app.use('/dashboard', dashboard);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

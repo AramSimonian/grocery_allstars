@@ -6,13 +6,13 @@ var assert = require('assert');
 var http = require('http');
 
 
-describe('Signup page', function() {
+describe('Register page', function() {
   beforeEach((done) => {
       this.server = http.createServer(app).listen(3000);
       this.browser = new Browser({
           site: 'http://localhost:3000'
       });
-      this.browser.visit('/signup', done);
+      this.browser.visit('/auth/register', done);
   });
 
   afterEach((done) => {
