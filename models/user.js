@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+  var User = sequelize.define('User', {
       firstName: DataTypes.STRING,
       lastName: DataTypes.STRING,
       password: {
@@ -25,15 +25,11 @@ module.exports = (sequelize, DataTypes) => {
           },
         }
       }
-    },
-    {
-      classMethods: {
-        associate: function (models) {
-
-        }
-
-      }
     });
+
+  User.associate = function(models) {
+    User.belongsToMany(models.Product, {through: 'UserProduct'});
+  }
 
   return User;
 };

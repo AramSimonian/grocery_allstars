@@ -17,10 +17,12 @@ describe('Product Unit Tests', () => {
 
   describe('#create()', () => {
     it('should create a new product', (done) => {
+      git branches
       models.Product.create({
         name: 'milk',
         barcode: 123,
       }).then((product) => {
+        models.Product.addUser();
         expect(product).to.include({name: 'milk'})
         expect(product).to.include({barcode: '123'})
         done()

@@ -17,18 +17,18 @@ describe('User Products Unit Tests', () => {
   describe('#create()', () => {
     it('should create a new user product record', (done) => {
       dateNow = Date.now();
+
       const user = models.User.create({
         firstName: 'John',
         lastName: 'Smith',
         password: 'password',
         email: 'example@example.com',
       }).then((result) => {
+        user.addProduct();
         // user.addProduct();
-        result.addProduct();
         console.log('USER: ', result.products);
         done();
       });
-
       console.log('USER: ', user);
       // models.UserProducts.create({
       //   userId: 1,

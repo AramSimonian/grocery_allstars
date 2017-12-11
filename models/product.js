@@ -19,12 +19,12 @@ module.exports = (sequelize, DataTypes) => {
         },
       }
     },
-  }, {
-    classMethods: {
-      associate: function(models) {
-      }
-    }
   });
+
+  Product.associate = function(models) {
+    Product.belongsToMany(models.User, {through: 'UserProduct'});
+  }
+
 
   return Product;
 };
