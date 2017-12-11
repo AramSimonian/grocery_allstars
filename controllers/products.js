@@ -2,6 +2,11 @@ var models  = require('../models');
 var express = require('express');
 var router  = express.Router();
 var Sequelize = require('sequelize')
+var ApiService = require('../services/apiService').ApiService;
+
+router.get('/apitest', function(req, res) {
+  ApiService.getTest();
+});
 
 router.post('/create', function(req, res) {
   models.Product.create({
