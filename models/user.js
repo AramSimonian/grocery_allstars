@@ -29,10 +29,11 @@ module.exports = (sequelize, DataTypes) => {
     {
       classMethods: {
         associate: function (models) {
-          User.belongsToMany(models.product, { through: 'UserProducts', as: 'product' });
+
         }
 
       }
     });
+
   return User;
 };

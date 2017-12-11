@@ -1,3 +1,5 @@
+var User      = require('./user');
+var Product     = require('./product');
 
 'use strict';
 module.exports = function(sequelize, DataTypes) {
@@ -10,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
       values: ['', 'consumed', 'discarded']
     }
   });
+
+
+  User.belongsToMany(Product, { through: UserProducts } );
+  Product.belongsToMany(User, { through: UserProducts } );
 
   return UserProducts;
 };

@@ -24,7 +24,8 @@ describe('User Products Unit Tests', () => {
         email: 'example@example.com',
       }).then((result) => {
         // user.addProduct();
-        console.log('USER: ', user.products);
+        result.addProduct();
+        console.log('USER: ', result.products);
         done();
       });
 
