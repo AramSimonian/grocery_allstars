@@ -15,6 +15,7 @@ var index = require('./controllers/index');
 var products = require('./controllers/products');
 var users = require('./controllers/users');
 var dashboard = require('./controllers/dashboard');
+var scanners = require('./controllers/scanners');
 var auth = require('./controllers/auth');
 
 
