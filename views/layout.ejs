@@ -19,22 +19,17 @@
 
 
     <body>
-      <nav class="white" role="navigation">
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">Verify.me</a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down" >
-        <li><a href="/auth/register" style="color:black">Sign Up</a></li>
-        <li><a href="/auth/login" style="color:black">Login</a></li>
-        <li><a href="/logout" style="color:black">Logout</a></li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <li><a href="/auth/register" style="color:black">Sign Up</a></li>
-        <li><a href="/auth/login" style="color:black">Login</a></li>
-        <li><a href="/logout" style="color:black">Logout</a></li>
-      </ul>
-    </div>
-  </nav>
+      <ul id="slide-out" class="side-nav">
+          <div class="user-view">
+
+            <li><a href="/auth/register" style="color:black">Sign Up</a></li>
+            <li><a href="/auth/login" style="color:black">Login</a></li>
+            <li><a href="/logout" style="color:black">Logout</a></li>
+          </div>
+
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="medium material-icons icon-teal" style="color:#26a69a";>menu</i></a>
+
 
 
   <div class="section no-pad-bot" id="index-banner">
