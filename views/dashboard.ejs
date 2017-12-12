@@ -1,4 +1,4 @@
-YOU ARE LOGGED IN !!!!!!!!
+
 
   <%+ extend('layout') %>
 
@@ -18,18 +18,23 @@ YOU ARE LOGGED IN !!!!!!!!
                  </div>
                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                      <input class="mdl-textfield__input" type="text" name="barcode" id="barcode">
-                     <label class="mdl-textfield__label " for="barcode">Barcode</label>
+                     <label class="mdl-textfield__label right-align " for="barcode">Barcode</label>
                  </div>
+
+                 <br><br>
 
              </div>
              <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-                 <label id="view-source" for="file-upload" class="f-upload mdl-button mdl-js-button">
-                     Scan
-                 </label>
+
                  <input id="file-upload" type="file" accept="video/*;capture=camcorder"/>
                  <button type="submit" class="waves-effect waves-light btn mdl-button mdl-js-button">Submit</button>
                  <button type="button" class=" waves-effect waves-light btn mdl-button mdl-js-button close">Cancel</button>
+                 <label id="view-source" for="file-upload" class="waves-effect waves-light btn-large f-upload mdl-button mdl-js-button right h2">
+                    SCAN
+                        <i class="material-icons right">send</i>
+                 </label>
              </div>
+
          </form>
        </div>
        </div>
@@ -38,22 +43,26 @@ YOU ARE LOGGED IN !!!!!!!!
            <i class="material-icons">add</i>
        </a>
 
-       <!-- Modal Trigger -->
-       <a class="waves-effect waves-light btn modal-trigger center-align" href="#modal1">Modal</a>
 
        <br><br><br>
+
+
 
        <!-- Modal Structure -->
 <ul class="collection">
   <% products.forEach(function(product) { %>
     <li class="collection-item">
-      <span><%= product.name %></span>
-      <span>Expires: </span>
-      <span class="mdl-list__item-sub-title">Expires: </span>
-  </span>
+
+ <i class="material-icons">local_grocery_store</i>
+ <br>
+      <span style="color:#26a69a;text-transform: uppercase;" ><%= product.name %></span>
+
+
+<br>
   <span class="mdl-list__item-secondary-content">
+    <span class="h1">Expires: </span>
       <span class="mdl-list__item-secondary-info">In date</span>
-      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+
   </span>
 </li>
 <% }); %>
