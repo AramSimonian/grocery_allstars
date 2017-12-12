@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSSample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- <script type="text/javascript">
+    $(function() {
+        var params = {
+            // Request parameters
+            "gtin": "5740900050303",
+        };
+
+        $.ajax({
+            url: "https://dev.tescolabs.com/product/?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","e8907b8bb6b345fb8da92f88c23f2bbf");
+                // xhrObj.setRequestHeader("Access-Control-Allow-Origin","*");
+                // xhrObj.withCredentials = false;
+
+            },
+            type: "GET",
+            // Request body
+            data: "{body}",
+        })
+        .done(function(data) {
+            alert("success");
+        })
+        .fail(function() {
+            alert("error");
+        });
+    });
+</script> -->
+
+<script type="text/javascript">
+// const yaml = require('js-yaml');
+// const fs = require('fs');
+
+(function(exports){
+
+  function ApiService() {
+    // this.config = config
+  }
+
+  var config =
+
+  ApiService.prototype.getProductData = () => {
+    fetch('https://dev.tescolabs.com/product/?gtin=5010092093243').then(function(data) {
+      let product = data.results;
+      return product.map(function(author) {
+        let li = createNode('li'),
+          img = createNode('img'),
+          span = createNode('span');
+        img.src = author.picture.medium;
+        span.innerHTML = `${author.name.first} ${author.name.last}`;
+        append(li, img);
+        append(li, span);
+        append(ul, li);
+      })
+    }).catch(function(error) {
+      console.log(error);
+    });
+  };
+
+  exports.ApiService = ApiService;
+})(this);
+
+
+function getYamlConfig(filename) {
+  try {
+    // this.config = yaml.safeLoad(fs.readFileSync(filename, 'utf8'));
+    // const indentedJson = JSON.stringify(config, null, 4);
+    // console.log(indentedJson);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+const productLookup = new ApiService();
+productLookup.getProductData();
+
+</script>
+
+</body>
+</html>
