@@ -113,24 +113,26 @@ $(function () {
             $node,
             canvas = Quagga.canvas.dom.image;
 
-        getProduct(result.codeResult.code);
-        $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
-        $node.find("img").attr("src", canvas.toDataURL());
-        $node.find("h4.code").html(code);
-        $("#result_strip ul.thumbnails").prepend($node);
+        getProduct(result.codeResult.code, () => {
+          $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
+          $node.find("img").attr("src", canvas.toDataURL());
+          $node.find("h4.code").html(code);
+          $("#result_strip ul.thumbnails").prepend($node);
+        });
+
     });
 
-    function getProduct(gtin) {
+    function getProduct(gtin, callback) {
       $.ajax({
         url: "/apiservice/?gtin=" + gtin,
         type: "GET",
         // Request body
         data: "",
-      })
-        .done(function(data) {
-          alert("success");
-        })
-        .fail(function() {
+        success: function(data) {
+          callback(data);
+          // alert(data);
+        }
+      }).fail(function() {
           alert("error");
         });
     }
