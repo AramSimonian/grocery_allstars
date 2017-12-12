@@ -7,6 +7,8 @@ a {
   color: #00B7FF;
 }
 
+
+
 /*@charset "UTF-8";*/
 /*@import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700|Cabin+Condensed:400,600");*/
 
@@ -537,4 +539,8 @@ _:-ms-input-placeholder, :root .demo-graph {
 
 .mdl-list__item-secondary-action {
   color: #80cbc4;
+}
+
+li > a {
+  color: black;
 }

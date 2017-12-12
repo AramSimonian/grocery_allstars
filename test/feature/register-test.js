@@ -33,7 +33,7 @@ describe('Register page', function() {
         this.browser.fill('input[name=lastName]', 'Smith');
         this.browser.fill('input[name=email]', "example@email.com");
         this.browser.fill('input[name=password]', "123");
-        this.browser.pressButton('Submit');
+        this.browser.pressButton('Sign up');
         done();
     });
 

@@ -7,11 +7,11 @@ const assert = chai.assert;
 
 describe('Product feature testing', () => {
     beforeEach((done) => {
-        this.server = http.createServer(app).listen(3000);
-        this.browser = new Browser({
+      this.server = http.createServer(app).listen(3000);
+      this.browser = new Browser({
             site: 'http://localhost:3000'
         });
-        this.browser.visit('/', done);
+      this.browser.visit('/dashboard', done);
     });
 
     afterEach((done) => {
@@ -21,13 +21,14 @@ describe('Product feature testing', () => {
 
     describe('Add a product', () =>{
         it('displays added product on page', (done) => {
-            console.log('start of it: ', this.browser.text('title'));
+          // console.log(this.browser.HTMLInputElement())
             this.browser.fill('input[name=name]', 'Test Name');
             this.browser.fill('input[name=barcode]', '12345');
             this.browser.pressButton('Submit').then( () => {
               expect(this.browser.text('div')).to.match(/Test Name/);
               done();
             });
+            done();
         })
     })
 
