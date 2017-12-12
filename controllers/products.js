@@ -1,23 +1,37 @@
-var models  = require('../models');
-var express = require('express');
-var router  = express.Router();
-var Sequelize = require('sequelize')
+var Product = require('../models/product');
+const express = require('express');
+const router = express.Router();
+const bookshelf = require('../models/database');
 
-router.post('/create', function(req, res) {
-  models.Product.create({
+router.post('/create', function (req, res) {
+
+  product = {
     name: req.body.name,
     barcode: req.body.barcode
-  }).then(function() {
-    res.redirect('/');
-  }).catch(Sequelize.ValidationError, function (err) {
-      // respond with validation errors
-      return res.status(422).send(err.errors);
-  }).catch(function (err) {
-      // every other error
-      return res.status(400).send({
-          message: err.message
+  }
+
+  bookshelf.transaction(function (t) {
+    return Product
+      .forge(product)
+      .save(null, {
+        transacting: t
+      })
+      .tap(function (product) {
+        // updated pivot table `users_products`
+        return product
+          .users()
+          .attach(req.user.id, {
+            transacting: t
+          });
       });
-  });
+  })
+    .then(function (product) {
+      res.redirect('/');
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

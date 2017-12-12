@@ -1,47 +1,36 @@
-const models = require('../../models');
-const chai = require('chai');
-const expect = chai.expect;
+const User      = require('../../models/user');
+const Model     = require('../../models/product');
+const chai      = require('chai');
+const expect    = chai.expect;
+var knex        = require('../../models/database').knex;
+var bookshelf   = require('bookshelf')(knex);
+var knexCleaner = require('knex-cleaner');
 
 describe('User Products Unit Tests', () => {
 
   before(function(done) {
-    models.User.sync({ force : true }) // drops table and re-creates it
-      .then(function() {
-        done(null);
-      })
-      .error(function(error) {
-        done(error);
-      });
+    knexCleaner.clean(bookshelf.knex);
+    done();
   });
 
   describe('#create()', () => {
     it('should create a new user product record', (done) => {
       dateNow = Date.now();
 
-      const user = models.User.create({
+      User.forge({
         firstName: 'John',
         lastName: 'Smith',
         password: 'password',
         email: 'example@example.com',
-      }).then((result) => {
-        user.addProduct();
-        // user.addProduct();
-        console.log('USER: ', result.products);
+      }).save().then((user) => {
+        user.related('products').create(
+          { name: 'Test Product',
+            description: 'Test Description',
+            barcode: '47569825728357'
+          }).yield(user);
+        console.log('USER: ', user);
         done();
       });
-      console.log('USER: ', user);
-      // models.UserProducts.create({
-      //   userId: 1,
-      //   productId: 1,
-      //   expiryDate: dateNow,
-      //   status: '',
-      // }).then((userProduct) => {
-      //   expect(userProduct).to.include({userId: 1});
-      //   expect(userProduct).to.include({productId: 1});
-      //   expect(userProduct).to.include({expiryDate: dateNow});
-      //   expect(userProduct).to.include({status: ''});
-      //   done();
-      // })
     });
 
 

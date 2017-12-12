@@ -1,4 +1,4 @@
-const models = require('../../models');
+const models = require('../../migrations-backup/index');
 const chai = require('chai');
 const expect = chai.expect;
 

@@ -7,9 +7,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
-var models = require('./models');
 var LocalStrategy = require("passport-local");
 
+
+var User = require('./models/user');
 
 var index = require('./controllers/index');
 var products = require('./controllers/products');
@@ -34,7 +35,7 @@ var engine = require('ejs-layout');
 app.set('view engine', 'ejs');
 app.engine('ejs', engine.__express);
 
-require('./config/passport/passport.js')(passport, models.User);
+require('./config/passport/passport.js')(passport, User);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -49,10 +50,10 @@ passport.serializeUser(function(user, done) {
 
 // deserialize user
 passport.deserializeUser(function(id, done) {
-    models.User.findById(id).then(function(user) {
+    User.where({ id: id }).fetch().then(function(user) {
 
         if (user) {
-            done(null, user.get());
+            done(null, user);
         } else {
             done(user.errors, null);
         }
