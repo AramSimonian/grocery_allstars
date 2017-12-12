@@ -6,13 +6,45 @@
 
 <body>
   <p>Login here</p>
-      <form id="login" name="login" method="post" action="/auth/login">
-          <label for="email">Email Address</label>
-          <input class="text" name="email" type="email" />
-          <label for="password">Password</label>
-          <input name="password" type="password" />
-          <input class="btn" type="submit" value="Log in" />
-      </form>
+
+  <%+ extend('layout') %>
+
+  <%+ section('content') %>
+  <div class="container">
+    <br><br>
+    <h1 class="header center orange-text">Welcome to Grocery Allstars</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">Please register or signup to scan your groceries</h5>
+    </div>
+    <!-- <div class="row center">
+      <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+    </div> -->
+
+
+    <br><br>
+
+  </div>
+
+  <form class="col s12 " id="signup" method="post" action="/auth/register">
+
+
+  <div class="row">
+    <div class="input-field col s12">
+      <input name="email" id="email" type="email" class="validate">
+      <label for="email">Email</label>
+    </div>
+   <div class="input-field col s12">
+     <input name = "password" id="password" type="password" class="validate">
+     <label for="password">Password</label>
+   </div>
+  </div>
+  <div class="row">
+
+    <button class="waves-effect waves-light btn-large" type="submit" class="mdl-button mdl-js-button">Login</button>
+
+  </div>
+  </form>
+  <%+ endSection %>
 
   </body>
 
