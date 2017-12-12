@@ -1,15 +1,33 @@
 <%+ extend('layout') %>
 
 <%+ section('content') %>
-    <form id="signup" name="signup" method="post" action="/signup">
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="email" />
-        <label for="firstName">Firstname</label>
-        <input name="firstName" type="text" />
-        <label for="lastName">Lastname</label>
-        <input name="lastName" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign Up" />
-    </form>
+<div class="row">
+<form class="col s12" id="signup" method="post" action="/auth/register">
+<div class="row">
+ <div class="input-field col s6">
+   <input name = "firstName" placeholder="Placeholder" id="firstName" type="text" class="validate">
+   <label for="firstName">First Name</label>
+ </div>
+ <div class="input-field col s6">
+   <input name = "lastName" id="lastName" type="text" class="validate">
+   <label for="lastName">Last Name</label>
+ </div>
+
+</div>
+
+<div class="row">
+ <div class="input-field col s12">
+   <input name = "password" id="password" type="password" class="validate">
+   <label for="password">Password</label>
+ </div>
+</div>
+<div class="row">
+ <div class="input-field col s12">
+   <input name="email" id="email" type="email" class="validate">
+   <label for="email">Email</label>
+ </div>
+  <button type="submit" class="mdl-button mdl-js-button">Submit</button>
+</div>
+</form>
+</div>
 <%+ endSection %>

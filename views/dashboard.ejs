@@ -1,1 +1,50 @@
 YOU ARE LOGGED IN !!!!!!!!
+
+<ul class="collection">
+  <% products.forEach(function(product) { %>
+    <li class="collection-item">
+      <span><%= product.name %></span>
+      <span>Expires: </span>
+      <span class="mdl-list__item-sub-title">Expires: </span>
+  </span>
+  <span class="mdl-list__item-secondary-content">
+      <span class="mdl-list__item-secondary-info">In date</span>
+      <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+  </span>
+</li>
+<% }); %>
+  </ul>
+
+  <div class="container">
+    <div class="section">
+  <form action="/products/create" method="post">
+             <div class="mdl-dialog__content">
+                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                     <input class="mdl-textfield__input" type="text" name="name" id="name">
+                     <label class="mdl-textfield__label" for="name">Name</label>
+                 </div>
+                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                     <input class="mdl-textfield__input" type="text" name="barcode" id="barcode">
+                     <label class="mdl-textfield__label" for="barcode">Barcode</label>
+                 </div>
+             </div>
+             <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                 <label id="view-source" for="file-upload" class="f-upload mdl-button mdl-js-button">
+                     Scan
+                 </label>
+                 <input id="file-upload" type="file" accept="video/*;capture=camcorder"/>
+                 <button type="submit" class="mdl-button mdl-js-button">Submit</button>
+                 <button type="button" class="mdl-button mdl-js-button close">Cancel</button>
+             </div>
+         </form>
+       </div>
+       </div>
+
+       <a id="view-source" class="show-modal custom-file-upload mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">
+           <i class="material-icons">add</i>
+       </a>
+
+       <!-- Modal Trigger -->
+       <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+       <!-- Modal Structure -->

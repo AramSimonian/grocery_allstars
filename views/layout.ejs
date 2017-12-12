@@ -24,14 +24,14 @@
       <a href="/" class="brand-logo">Verify.me</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/users/new">Sign Up</a></li>
-        <li><a href="/sessions/new">Login</a></li>
-        <li><a href="/sessions">Logout</a></li>
+        <li><a href="/auth/register">Sign Up</a></li>
+        <li><a href="/auth/login">Login</a></li>
+        <li><a href="/logout">Logout</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="/users/new">Sign Up</a></li>
-        <li><a href="/sessions/new">Login</a></li>
-        <li><a href="/sessions">Logout</a></li>
+        <li><a href="/auth/register">Sign Up</a></li>
+        <li><a href="/auth/login">Login</a></li>
+        <li><a href="/logout">Logout</a></li>
       </ul>
     </div>
   </nav>
@@ -48,64 +48,14 @@
         <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
       </div> -->
 
-      <div class="row">
-   <form class="col s12">
-     <div class="row">
-       <div class="input-field col s6">
-         <input name = "firstName" placeholder="Placeholder" id="firstName" type="text" class="validate">
-         <label for="firstName">First Name</label>
-       </div>
-       <div class="input-field col s6">
-         <input name = "lastName" id="lastName" type="text" class="validate">
-         <label for="lastName">Last Name</label>
-       </div>
-
-     </div>
-
-     <div class="row">
-       <div class="input-field col s12">
-         <input name = "password" id="password" type="password" class="validate">
-         <label for="password">Password</label>
-       </div>
-     </div>
-     <div class="row">
-       <div class="input-field col s12">
-         <input name="email" id="email" type="email" class="validate">
-         <label for="email">Email</label>
-       </div>
-     </div>
-   </form>
- </div>
+      <%+ yield('content') %>
 
       <br><br>
 
     </div>
   </div>
 
-   <div class="container">
-     <div class="section">
-  <form action="/products/create" method="post">
-              <div class="mdl-dialog__content">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                      <input class="mdl-textfield__input" type="text" name="name" id="name">
-                      <label class="mdl-textfield__label" for="name">Name</label>
-                  </div>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                      <input class="mdl-textfield__input" type="text" name="barcode" id="barcode">
-                      <label class="mdl-textfield__label" for="barcode">Barcode</label>
-                  </div>
-              </div>
-              <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-                  <label id="view-source" for="file-upload" class="f-upload mdl-button mdl-js-button">
-                      Scan
-                  </label>
-                  <input id="file-upload" type="file" accept="video/*;capture=camcorder"/>
-                  <button type="submit" class="mdl-button mdl-js-button">Submit</button>
-                  <button type="button" class="mdl-button mdl-js-button close">Cancel</button>
-              </div>
-          </form>
-        </div>
-        </div>
+
 
   <!-- <div class="container"> -->
     <!-- <div class="section"> -->
