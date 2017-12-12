@@ -1,9 +1,15 @@
 var Product = require('../models/product');
 var express = require('express');
 var router = express.Router();
+var ApiService = require('../services/ApiService');
+var apiService = new ApiService();
 
 /* GET home page. */
 router.get('/', isLoggedIn, function(req, res, next) {
+  apiService.getYamlConfig().then(() => {
+    apiService.getProductData();
+  });
+
   Product.fetchAll({
     // include: [ models.Task ]
   }).then(function(products) {
