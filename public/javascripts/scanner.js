@@ -122,4 +122,19 @@ $(function () {
         $node.find("h4.code").html(code);
         $("#result_strip ul.thumbnails").prepend($node);
     });
+
+    function getProduct(gtin) {
+      $.ajax({
+        url: "/apiservice/?gtin=" + gtin + $.param(params),
+        type: "GET",
+        // Request body
+        data: "{body}",
+      })
+        .done(function(data) {
+          alert("success");
+        })
+        .fail(function() {
+          alert("error");
+        });
+    }
 })

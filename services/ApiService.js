@@ -8,7 +8,7 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     this.config = config
   }
 
-  ApiService.prototype.getProductData = (callback) => {
+  ApiService.prototype.getProductData = (gtin, callback) => {
 
     var anHttpRequest = new XMLHttpRequest();
 
@@ -17,7 +17,7 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
          callback(anHttpRequest.responseText);
      }
 
-     anHttpRequest.open( "GET", this.config["tesco"]["productUrl"], true );
+     anHttpRequest.open( "GET", this.config["tesco"]["productUrl"] + gtin, true );
      anHttpRequest.setRequestHeader("Ocp-Apim-Subscription-Key",this.config["tesco"]["key"]);
      anHttpRequest.send( null );
    };

@@ -2,14 +2,12 @@ var Product = require('../models/product');
 var express = require('express');
 var router = express.Router();
 var ApiService = require('../services/ApiService').ApiService;
-// var apiService = new ApiService();
-
 const productLookup = new ApiService();
 
 /* GET home page. */
 router.get('/', isLoggedIn, function(req, res, next) {
 
-  productLookup.getProductData((response) => {
+  productLookup.getProductData('05010092093243', (response) => {
     javObj = JSON.parse(response);
     console.log(javObj);
   });
