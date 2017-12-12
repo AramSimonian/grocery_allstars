@@ -46,10 +46,6 @@ $(function () {
         },
         decode: function (src) {
             var self = this
-            console.log('SOURCE: ', src);
-                // config = $.extend({}, self.state, {src: src});
-            // config = $.extend({}, {src: src});
-
             config['src'] = src;
 
             Quagga.decodeSingle(config, function (result) {
@@ -117,6 +113,7 @@ $(function () {
             $node,
             canvas = Quagga.canvas.dom.image;
 
+        getProduct(result.codeResult.code);
         $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
         $node.find("img").attr("src", canvas.toDataURL());
         $node.find("h4.code").html(code);
@@ -125,10 +122,10 @@ $(function () {
 
     function getProduct(gtin) {
       $.ajax({
-        url: "/apiservice/?gtin=" + gtin + $.param(params),
+        url: "/apiservice/?gtin=" + gtin,
         type: "GET",
         // Request body
-        data: "{body}",
+        data: "",
       })
         .done(function(data) {
           alert("success");
