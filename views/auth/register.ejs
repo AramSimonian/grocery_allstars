@@ -4,7 +4,7 @@
 
 <div class="container">
   <br><br>
-  <h1 class="header center orange-text">Welcome </h1>
+  <h1 class="header center orange-text">Welcome to Grocery Allstars </h1>
   <div class="row center">
     <h5 class="header col s12 light">Please signup</h5>
   </div>
@@ -16,9 +16,9 @@
   <br><br>
 
 </div>
-<div class="row">
+<div class="row center-align">
 <form class="col s12" id="signup" method="post" action="/auth/register">
-<div class="row">
+<div class="mdl-dialog__content">
  <div class="input-field col s12">
    <input name = "firstName" id="firstName" type="text" class="validate">
    <label for="firstName">First Name</label>
@@ -28,19 +28,18 @@
    <label for="lastName">Last Name</label>
  </div>
 
-</div>
+<div class="row">
+  <div class="input-field col s12">
+    <input name="email" id="email" type="email" class="validate">
+    <label for="email">Email</label>
+  </div>
 
-<div class="row">
- <div class="input-field col s12">
-   <input name = "password" id="password" type="password" class="validate">
-   <label for="password">Password</label>
- </div>
 </div>
 <div class="row">
- <div class="input-field col s12">
-   <input name="email" id="email" type="email" class="validate">
-   <label for="email">Email</label>
- </div>
+  <div class="input-field col s12">
+    <input name = "password" id="password" type="password" class="validate">
+    <label for="password">Password</label>
+  </div>
   <button class="waves-effect waves-light btn-large" type="submit" class="mdl-button mdl-js-button">Sign up</button>
 
 </div>
