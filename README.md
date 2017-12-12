@@ -1,7 +1,7 @@
 # Grocery Allstars
-How often have you found a slimy pack of salad, or an inedible kernel of something formally known as food, at the back of your fridge? Food waste is a global issue. According to the Food and Agriculture Organisation of the United Nations one third of the global food production is lost or wasted annually. And in the UK, we throw away 7 million tonnes of food and drink from our homes every year, the majority of which could have been eaten. Wasting this food costs the average household in the UK £470 a year. 
+How often have you found a slimy pack of salad, or an inedible kernel of something formally known as food, at the back of your fridge? Food waste is a global issue with one third of the global production lost or wasted annually, according to the Food and Agriculture Organisation. In the UK, we throw away 7 million tonnes of food and drink from our homes every year, the majority of which could have been eaten. This wastage costs the average household in the UK £470 a year. 
 
-We created an app which uses a barcode scanner to scan food items and notify the user when it is due to be eaten, before the use by date, cutting down on food waste and saving you money. 
+To help curb this endemic we created an app which uses a barcode scanner to scan food items and notify the user when it is due to be eaten, before the use by date, cutting down on food waste and saving you money. 
 
 ### Built with
 - Node.js
