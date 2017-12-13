@@ -1,18 +1,18 @@
-var models  = require('../models');
+var Product = require('../models/product');
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  models.Product.findAll({
+  Product.fetchAll({
     // include: [ models.Task ]
-  }).then(function(products) {
+  }).then(function (products) {
     res.render('index', {
       title: 'Sequelize: Express Example',
       products: products
     });
+  }).catch(err => {
+    res.json({error: err.message});
   });
-  // res.render('index', { title: 'Express' });
 });
 
 module.exports = router;

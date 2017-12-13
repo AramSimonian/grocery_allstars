@@ -1,5 +1,5 @@
 const bCrypt = require('bcrypt-nodejs');
-var Sequelize = require('sequelize')
+// var Sequelize = require('sequelize')
 
 module.exports = function (passport, user) {
     const User = user;
@@ -10,7 +10,7 @@ module.exports = function (passport, user) {
     });
 
     passport.deserializeUser(function (id, done) {
-        User.findById(id).then(function (user) {
+        User.where({ id: id }).fetch().then(function (user) {
             if (user) {
                 done(null, user.get());
             }
@@ -32,11 +32,9 @@ module.exports = function (passport, user) {
             const generateHash = function (password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
-            User.findOne({
-                where: {
-                    email: email
-                }
-            }).then(function (user) {
+            User.where({
+              email: email
+            }).fetch().then(function (user) {
               const userPassword = generateHash(password);
               const data = {
                 email: email,
@@ -45,14 +43,14 @@ module.exports = function (passport, user) {
                 lastName: req.body.lastName
               };
 
-              User.create(data).then(function (newUser, created) {
+              User.forge(data).save().then(function (newUser, created) {
                 if (!newUser) {
                   return done(null, false);
                 }
                 if (newUser) {
                   return done(null, newUser);
                 }
-              }).catch(Sequelize.ValidationError, function (err) {
+              }).catch(function (err) {
                 // print the error details
                 console.log('ERROR: **** ' + err, req.body.email);
 
@@ -78,22 +76,20 @@ module.exports = function (passport, user) {
                 return bCrypt.compareSync(password, userpass);
             };
 
-            User.findOne({
-                where: {
-                    email: email
-                }
-            }).then(function (user) {
+            User.where({
+              email: email
+            }).fetch().then(function (user) {
                 if (!user) {
                     return done(null, false, {
                         message: 'Email does not exist'
                     });
                 }
-                if (!isValidPassword(user.password, password)) {
+                if (!isValidPassword(user.attributes.password, password)) {
                     return done(null, false, {
                         message: 'Incorrect password.'
                     });
                 }
-                const userinfo = user.get();
+                const userinfo = user;
                 return done(null, userinfo);
 
             }).catch(function (err) {
