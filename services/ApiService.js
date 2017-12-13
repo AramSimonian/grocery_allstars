@@ -23,7 +23,16 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
    };
 
    ApiService.prototype.getGroceryData = function(tpnc, callback) {
-     
+     var anHttpRequest = new XMLHttpRequest();
+
+     anHttpRequest.onreadystatechange = function() {
+        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+          callback(anHttpRequest.responseText);
+      }
+
+      anHttpRequest.open( "GET", (this.config["tesco"]["groceryUrl"]).replace("{TPNC}", tpnc), true );
+      anHttpRequest.setRequestHeader("Ocp-Apim-Subscription-Key",this.config["tesco"]["key"]);
+      anHttpRequest.send( null );
    }
 
   function getYamlConfig(filename) {
