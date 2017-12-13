@@ -5,7 +5,7 @@ var ApiService = require('../services/ApiService').ApiService;
 const productLookup = new ApiService();
 
 /* GET home page. */
-router.get('/', isLoggedIn, function(req, res, next) {
+router.get('/', function(req, res, next) {
   Product.fetchAll({
     // include: [ models.Task ]
   }).then(function(products) {

@@ -27,10 +27,6 @@ describe.only('Product feature testing', () => {
   });
 
   beforeEach((done) => {
-    // this.server = http.createServer(app).listen(3000);
-    // this.browser = new Browser({
-    //   site: 'http://localhost:3000'
-    // });
     this.browser.visit('/dashboard', done);
   });
 
@@ -41,7 +37,6 @@ describe.only('Product feature testing', () => {
 
   describe('Add a product', () => {
     it('displays added product on page', (done) => {
-      console.log(this.browser);
       // console.log(this.browser.HTMLInputElement())
       this.browser.fill('input[name=name]', 'Test Name');
       this.browser.fill('input[name=barcode]', '12345');
