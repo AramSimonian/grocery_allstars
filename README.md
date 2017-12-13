@@ -14,7 +14,10 @@ To help curb this endemic we created an app which uses a barcode scanner to scan
 
 ### Install
 This project uses node and npm. Install node directly from the [node.js.org](https://nodejs.org/en/download/) website. Install npm:
-``` npm install ```
+
+```sh
+$ npm install 
+```
 
 
 ### Testing
