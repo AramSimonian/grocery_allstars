@@ -1,94 +1,158 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
 
     <title>Grocery</title>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#3372DF">
-    <link rel="shortcut icon" href="images/favicon.png">
+    <!--<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">-->
+    <!--<meta name="msapplication-TileColor" content="#3372DF">-->
+    <!--<link rel="shortcut icon" href="images/favicon.png">-->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen,projection">
-      <link href="/stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
+          media="screen,projection">
+    <link href="/stylesheets/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+</head>
 
 
-    <body>
-      
-      <ul id="slide-out" class="side-nav">
-          <div class="user-view">
+<body>
 
-            <li><a href="/auth/register" style="color:black">Sign Up</a></li>
-            <li><a href="/auth/login" style="color:black">Login</a></li>
-            <li><a href="/logout" style="color:black">Logout</a></li>
-          </div>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Logo</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
-        </ul>
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="medium material-icons icon-teal" style="color:#26a69a";>menu</i></a>
-
+        </div>
+    </nav>
+</div>
 
 
-  <div class="section no-pad-bot" id="index-banner">
+<ul id="mobile-demo" class="side-nav">
+    <li><div class="user-view">
+            <div class="background">
+                <img src="images/office.jpg">
+            </div>
+            <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+            <a href="#!name"><span class="white-text name">John Doe</span></a>
+            <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div></li>
+    <li><a href="/auth/register" class="waves-effect" style="color:black">Sign Up</a></li>
+    <li><a href="/auth/login" class="waves-effect" style="color:black">Login</a></li>
+    <li><div class="divider"></div></li>
 
+</ul>
+
+<!--<ul id="slide-out" class="side-nav">-->
+    <!--<li><div class="user-view">-->
+            <!--<div class="background">-->
+                <!--<img src="images/office.jpg">-->
+            <!--</div>-->
+            <!--<a href="#!user"><img class="circle" src="images/yuna.jpg"></a>-->
+            <!--<a href="#!name"><span class="white-text name">John Doe</span></a>-->
+            <!--<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>-->
+        <!--</div></li>-->
+    <!--<li><a href="/auth/register" class="waves-effect" style="color:black">Sign Up</a></li>-->
+    <!--<li><a href="/auth/login" class="waves-effect" style="color:black">Login</a></li>-->
+    <!--<li><div class="divider"></div></li>-->
+
+<!--</ul>-->
+
+
+<div class="section no-pad-bot" id="index-banner">
 
 
     <%+ yield('content') %>
 
+    <a id="view-source"
+       class="mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">
+        <input class="file-button" type="file" accept="video/*;capture=camcorder"/>
+    </a>
+    <a id="view-source"
+       class="mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">
+        <i class="material-icons">add</i>
+    </a>
+
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container"> -->
+<!-- <div class="section"> -->
+
+<!--   Icon Section   -->
+<!-- <div class="row">
+  <div class="col s12 m4">
+    <div class="icon-block">
+      <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
+      <h5 class="center">Speeds up development</h5>
+
+      <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+    </div>
   </div>
 
+  <div class="col s12 m4">
+    <div class="icon-block">
+      <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
+      <h5 class="center">User Experience Focused</h5>
+
+      <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+    </div>
+  </div>
+
+  <div class="col s12 m4">
+    <div class="icon-block">
+      <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+      <h5 class="center">Easy to work with</h5>
+
+      <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+    </div>
+  </div>
+</div> -->
+
+<!-- </div> -->
+<!-- <br><br> -->
+<!-- </div> -->
 
 
-  <!-- <div class="container"> -->
-    <!-- <div class="section"> -->
-
-      <!--   Icon Section   -->
-      <!-- <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div> -->
-
-    <!-- </div> -->
-    <!-- <br><br> -->
-  <!-- </div> -->
-
-
-  <!--Import jQuery before materialize.js-->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<!--Import jQuery before materialize.js-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 <script src="/javascripts/init.js"></script>
-  <script type="text/javascript" src="/javascripts/quagga.js"></script>
-  <script type="text/javascript" src="/javascripts/scanner.js"></script>
+<script type="text/javascript" src="/javascripts/quagga.js"></script>
+<script type="text/javascript" src="/javascripts/scanner.js"></script>
 
 
+<script>
+  $(document).ready(function () {
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $(".button-collapse").sideNav();
+    $('.modal').modal();
+  });
+</script>
 
-  </body>
+</body>
 </html>
