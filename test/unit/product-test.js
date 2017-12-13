@@ -6,7 +6,7 @@ var bookshelf = require('bookshelf')(knex);
 var knexCleaner = require('knex-cleaner');
 
 
-describe.only('Product Unit Tests', () => {
+describe('Product Unit Tests', () => {
 
   beforeEach(function(done) {
     knexCleaner.clean(bookshelf.knex);

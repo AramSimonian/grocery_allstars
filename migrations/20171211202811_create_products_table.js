@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
       table.string('name').notNullable();
       table.string('description');
       table.string('barcode').unique();
+      table.dateTime('expiry');
+      table.string('productType');
       table.timestamps();
     })
   ]);

@@ -5,7 +5,7 @@ const expect = chai.expect;
 const http = require('http');
 const assert = chai.assert;
 
-describe('Product feature testing', () => {
+describe.only('Product feature testing', () => {
     beforeEach((done) => {
       this.server = http.createServer(app).listen(3000);
       this.browser = new Browser({
