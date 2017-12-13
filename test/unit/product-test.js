@@ -1,37 +1,36 @@
-const models = require('../../models');
-const chai = require('chai');
-const expect = chai.expect;
-// const Product = require('../../models/product')
+const Product = require('../../models/product');
+const chai    = require('chai');
+const expect  = chai.expect;
+var knex      = require('../../models/database').knex;
+var bookshelf = require('bookshelf')(knex);
+var knexCleaner = require('knex-cleaner');
+
 
 describe('Product Unit Tests', () => {
 
-  before(function(done) {
-    models.Product.sync({ force : true }) // drops table and re-creates it
-      .then(function() {
-        done(null);
-      })
-      .error(function(error) {
-        done(error);
-      });
+  beforeEach(function(done) {
+    knexCleaner.clean(bookshelf.knex);
+    done();
   });
 
   describe('#create()', () => {
     it('should create a new product', (done) => {
-      models.Product.create({
+      Product.forge({
         name: 'milk',
-        barcode: 123,
-      }).then((product) => {
-        expect(product).to.include({name: 'milk'})
-        expect(product).to.include({barcode: '123'})
+        barcode: '123',
+      }).save()
+        .then((product) => {
+        expect(product.attributes).to.include({name: 'milk'})
+        expect(product.attributes).to.include({barcode: '123'})
         done()
       })
     })
 
     it('should raise an error if name field is blank', (done) => {
-      models.Product.create({
+      Product.forge({
         "name": '',
         "barcode": '1234'
-      }).then(function (result) {
+      }).save().then(function (result) {
         expect.fail();
         done();
       }).catch(function (err) {

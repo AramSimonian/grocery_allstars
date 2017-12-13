@@ -7,9 +7,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
-var models = require('./models');
 var LocalStrategy = require("passport-local");
 
+
+var User = require('./models/user');
 
 var index = require('./controllers/index');
 var products = require('./controllers/products');
@@ -17,7 +18,7 @@ var users = require('./controllers/users');
 var dashboard = require('./controllers/dashboard');
 var scanners = require('./controllers/scanners');
 var auth = require('./controllers/auth');
-
+var apiService = require('./controllers/apiService');
 
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,7 +35,7 @@ var engine = require('ejs-layout');
 app.set('view engine', 'ejs');
 app.engine('ejs', engine.__express);
 
-require('./config/passport/passport.js')(passport, models.User);
+require('./config/passport/passport.js')(passport, User);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -49,10 +50,10 @@ passport.serializeUser(function(user, done) {
 
 // deserialize user
 passport.deserializeUser(function(id, done) {
-    models.User.findById(id).then(function(user) {
+    User.where({ id: id }).fetch().then(function(user) {
 
         if (user) {
-            done(null, user.get());
+            done(null, user);
         } else {
             done(user.errors, null);
         }
@@ -68,6 +69,7 @@ app.use('/products', products);
 app.use('/users', users);
 app.use('/dashboard', dashboard);
 app.use('/auth', auth);
+app.use('/apiservice', apiService);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
