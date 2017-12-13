@@ -1,7 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
 
+  <script>
+  $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal('open');
+  });
+  </script>
+
+  <body>
 
   <%+ extend('layout') %>
-
   <%+ section('content') %>
 
   <div class="row center">
@@ -27,7 +38,7 @@
              <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
 
                  <input id="file-upload" type="file" accept="video/*;capture=camcorder"/>
-                 <button type="submit" class="waves-effect waves-light btn mdl-button mdl-js-button">Submit</button>
+                 <button type="submit" ata-target="modal1" class="waves-effect waves-light btn modal-trigger">Submit</button>
                  <button type="button" class=" waves-effect waves-light btn mdl-button mdl-js-button close">Cancel</button>
                  <label id="view-source" for="file-upload" class="waves-effect waves-light btn-large f-upload mdl-button mdl-js-button right h2">
                     SCAN
@@ -71,3 +82,6 @@
 
 
        <%+ endSection %>
+
+</body>
+</html>
