@@ -121,6 +121,11 @@ $(function () {
       node.appendChild(textnode);
       document.getElementById("product_info").appendChild(node);
 
+      var nameField = $('#name');
+      var barcodeField = $('#barcode');
+
+      nameField.val(data.products[0].description);
+      barcodeField.val(data.products[0].gtin);
 
       // $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
       // $node.find("img").attr("src", canvas.toDataURL());
