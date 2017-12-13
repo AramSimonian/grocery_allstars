@@ -22,6 +22,9 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
      anHttpRequest.send( null );
    };
 
+   ApiService.prototype.getGroceryData = function(tpnc, callback) {
+     
+   }
 
   function getYamlConfig(filename) {
     try {
