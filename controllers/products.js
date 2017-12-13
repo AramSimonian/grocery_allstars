@@ -1,14 +1,31 @@
-var Product = require('../models/product');
+const Product = require('../models/product');
 const express = require('express');
 const router = express.Router();
 const bookshelf = require('../models/database');
 
+router.get('/', function(req, res, next) {
+  Product.collection().query((qb) => {
+    qb.where('created_at', '<=', new Date());
+    qb.orderBy('created_at', 'DESC');
+  })
+    .fetch()
+    .then((products) => {
+      console.log(products);
+      res.render('summary', {
+        products: products
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({error: true, data: {message: err.message}});
+    });
+});
+
 router.post('/create', function (req, res) {
 
-  product = {
+  const product = {
     name: req.body.name,
     barcode: req.body.barcode
-  }
+  };
 
   bookshelf.transaction(function (t) {
     return Product

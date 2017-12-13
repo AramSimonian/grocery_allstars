@@ -5,11 +5,11 @@ var ApiService = require('../services/ApiService').ApiService;
 const productLookup = new ApiService();
 
 /* GET home page. */
-router.get('/', isLoggedIn, function(req, res, next) {
+router.get('/', function(req, res, next) {
   productLookup.getProductData(req.query.gtin, (response) => {
-    // const javObj = JSON.parse(response);
+    const javObj = JSON.parse(response);
     // console.log(j  avObj);
-    res.json(response);
+    res.json(javObj);
   });
 
 });

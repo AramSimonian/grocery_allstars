@@ -8,7 +8,7 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     this.config = config
   }
 
-  ApiService.prototype.getProductData = (gtin, callback) => {
+  ApiService.prototype.getProductData = function(gtin, callback) {
 
     var anHttpRequest = new XMLHttpRequest();
 
@@ -22,20 +22,19 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
      anHttpRequest.send( null );
    };
 
+
+  function getYamlConfig(filename) {
+    try {
+      return yaml.safeLoad(fs.readFileSync(filename, 'utf8'));
+    } catch (e) {
+      console.log(e);
+    }
+
+  }
+
    exports.ApiService = ApiService;
 })(this);
 
-
-function getYamlConfig(filename) {
-  try {
-    this.config = yaml.safeLoad(fs.readFileSync(filename, 'utf8'));
-    const indentedJson = JSON.stringify(config, null, 4);
-    // console.log(indentedJson);
-  } catch (e) {
-    console.log(e);
-  }
-
-}
 
 
 function getGroceryData() {
