@@ -1,37 +1,32 @@
-const models = require('../../migrations-backup/index');
+const User = require('../../models/user');
 const chai = require('chai');
 const expect = chai.expect;
 
 describe('User Unit Tests', () => {
 
-  before(function(done) {
-    models.User.sync({ force : true }) // drops table and re-creates it
-      .then(function() {
-        done(null);
-      })
-      .error(function(error) {
-        done(error);
-      });
+  beforeEach(function(done) {
+    knexCleaner.clean(bookshelf.knex);
+    done();
   });
 
   describe('#create()', () => {
     it('should create a new user', (done) => {
-      models.User.create({
+      User.forge({
         firstName: 'John',
         lastName: 'Smith',
         password: 'password',
-        email: 'example@example.com',
-      }).then((user) => {
-        expect(user).to.include({firstName: 'John'});
-        expect(user).to.include({lastName: 'Smith'});
-        expect(user).to.include({password: 'password'});
-        expect(user).to.include({email: 'example@example.com'});
+        email: 'test1@example.com',
+      }).save().then((user) => {
+        expect(user.attributes).to.include({firstName: 'John'});
+        expect(user.attributes).to.include({lastName: 'Smith'});
+        expect(user.attributes).to.include({password: 'password'});
+        expect(user.attributes).to.include({email: 'test1@example.com'});
         done();
       })
     });
 
     it('should raise an error if email is invalid', (done) => {
-      models.User.create({
+      User.create({
         firstName: 'John',
         lastName: 'Smith',
         password: '123456',
@@ -46,7 +41,7 @@ describe('User Unit Tests', () => {
     });
 
     it('should raise an error if email is not unique', (done) => {
-      models.User.create({
+      User.create({
         firstName: 'John',
         lastName: 'Smith',
         password: 'password',
@@ -61,7 +56,7 @@ describe('User Unit Tests', () => {
     });
 
     it('should raise an error if password is not 6 characters', (done) => {
-      models.User.create({
+      User.create({
         firstName: 'John',
         lastName: 'Smith',
         password: '12345',
