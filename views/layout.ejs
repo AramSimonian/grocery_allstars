@@ -103,6 +103,31 @@
               </div>
               <div id="interactive" class="viewport"></div>
               <div id="debug" class="detection"></div>
+              <form action="/products/create" method="post">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" type="text" name="name" id="name">
+                              <label class="mdl-textfield__label" for="name">Name</label>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" type="text" name="barcode" id="barcode">
+                              <label class="mdl-textfield__label right-align " for="barcode">Barcode</label>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" type="date" name="expiry" id="expiry">
+                              <label class="mdl-textfield__label" for="expiry">Expiry Date</label>
+                          </div>
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                              <input class="mdl-textfield__input" type="text" name="productType" id="productType">
+                              <label class="mdl-textfield__label right-align " for="productType">Product Type</label>
+                          </div>
+                          <br><br>
+                          <input id="file-upload" type="file" accept="video/*;capture=camcorder"/>
+                          <button type="submit" ata-target="modal1" class="waves-effect waves-light btn modal-trigger">Submit</button>
+                          <button type="button" class=" waves-effect waves-light btn mdl-button mdl-js-button close">Cancel</button>
+                          <label id="view-source" for="file-upload" class="waves-effect waves-light btn-large f-upload mdl-button mdl-js-button right h2">SCAN
+                                 <i class="material-icons right">send</i>
+                          </label>
+                     </form>
           </section>
         </div>
         <div class="modal-footer">
