@@ -20,32 +20,22 @@
                 <!--</div>-->
                 <!--<div id="interactive" class="viewport"></div>-->
                 <!--<div id="debug" class="detection"></div>-->
+                <div>
+                    <img id="imageDisplay" src=""/>
+                </div>
                 <br>
                 <div class="row">
                     <div class="row">
                         <div class="col s12">
-                            <!--<input disabled value="I am not editable" id="disabled" type="text" class="validate">-->
-                            <!--<label for="disabled">Disabled</label>-->
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s12">
-                            <!--<input disabled value="I am not editable" id="disabled" type="text" class="validate">-->
-                            <!--<label for="disabled">Disabled</label>-->
 
-                            <label for="name">Description</label>
-                            <textarea name="description" id="description" class="materialize-textarea"></textarea>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col s12">
                             <label for="barcode">Barcode</label>
                             <input class="validate" type="text" name="barcode" id="barcode">
-
-                            <!--<input id="password" type="password" class="validate">-->
-                            <!--<label for="password">Password</label>-->
                         </div>
                     </div>
                     <div class="row">
@@ -58,11 +48,19 @@
                         <div class="col s12">
                             <label for="productType">Product Type</label>
                             <select id="productType">
-                                <option value="" disabled selected>Choose your option</option>
+                                <option value="general">General</option>
                                 <option value="dairy">Dairy</option>
                                 <option value="meat">Meat</option>
+                                <option value="fruit">Fruit</option>
+                                <option value="vegetables">Vegetables</option>
+
                             </select>
                         </div>
+                    </div>
+
+                    <div>
+                        <input type="hidden" type="text" name="thumbnail_url" id="thumbnail_url">
+
                     </div>
                 </div>
             </section>
@@ -73,7 +71,6 @@
             </button>
             <button type="button" class="modal-action modal-close waves-effect waves-light btn mdl-button mdl-js-button">Cancel
             </button>
-            <!--<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>-->
         </div>
     </form>
 </div>

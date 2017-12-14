@@ -3,9 +3,9 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('products', function(table) {
       table.increments();
       table.string('name').notNullable();
-      table.string('description');
       table.string('barcode');
-      table.dateTime('expiry');
+      table.string('thumbnail_url');
+      table.dateTime('expiry').notNullable();
       table.string('productType');
       table.timestamps();
     })
