@@ -16,11 +16,11 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
        if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
          callback(anHttpRequest.responseText);
      }
-
      anHttpRequest.open( "GET", this.config["tesco"]["productUrl"] + gtin, true );
      anHttpRequest.setRequestHeader("Ocp-Apim-Subscription-Key",this.config["tesco"]["key"]);
      anHttpRequest.send( null );
    };
+
 
    ApiService.prototype.getGroceryData = function(tpnc, callback) {
      var anHttpRequest = new XMLHttpRequest();
@@ -29,7 +29,6 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
           callback(anHttpRequest.responseText);
       }
-
       anHttpRequest.open( "GET", (this.config["tesco"]["groceryUrl"]).replace("{TPNC}", tpnc), true );
       anHttpRequest.setRequestHeader("Ocp-Apim-Subscription-Key",this.config["tesco"]["key"]);
       anHttpRequest.send( null );

@@ -6,23 +6,29 @@ const productLookup = new ApiService();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  productLookup.getProductData(req.query.gtin, (response) => {
-    const javObj = JSON.parse(response);
-    // console.log(j  avObj);
-    res.json(javObj);
-  });
+  const objReturn = {};
 
+  productLookup.getProductData(req.query.gtin, (response) => {
+
+    const objProduct = JSON.parse(response);
+
+    objReturn.gtin = req.query.gtin;
+
+    productLookup.getGroceryData(objProduct.products[0].tpnc, (response) => {
+      const objGrocery = JSON.parse(response);
+      objReturn.name = objGrocery.uk.ghs.products.results[0].name;
+      objReturn.image = objGrocery.uk.ghs.products.results[0].image;
+
+      res.json(objReturn);
+    });
+  });
 });
 
 function isLoggedIn(req, res, next) {
-
-console.log('req.isAuthenticated:', req.isAuthenticated());
- if (req.isAuthenticated()) {
+  if (req.isAuthenticated()) {
    return next();
- }
-
+  }
  res.redirect('/auth/login');
-
 }
 
  module.exports = router;
