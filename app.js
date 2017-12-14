@@ -19,6 +19,7 @@ var dashboard = require('./controllers/dashboard');
 var scans = require('./controllers/scans');
 var auth = require('./controllers/auth');
 var apiService = require('./controllers/apiService');
+var reports = require('./controllers/reports');
 
 //For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -70,6 +71,7 @@ app.use('/users', users);
 app.use('/dashboard', dashboard);
 app.use('/auth', auth);
 app.use('/apiservice', apiService);
+app.use('/reports', reports);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
