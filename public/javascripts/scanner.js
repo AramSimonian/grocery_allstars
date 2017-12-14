@@ -61,7 +61,7 @@ $(function () {
 
       var nameField = $('#name');
       var barcodeField = $('#barcode');
-      var imageField = $('#image');
+      var imageField = $('#thumbnail_url');
       var imageDisplayField = $('#imageDisplay');
 
       nameField.val(data.name);

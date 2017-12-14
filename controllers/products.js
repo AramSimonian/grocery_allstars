@@ -26,7 +26,7 @@ router.post('/create', function (req, res) {
     name: req.body.name,
     barcode: req.body.barcode,
     expiry: new Date(req.body.expiry),
-    thumbnail_url: new Date(req.body.imgUrl),
+    thumbnail_url: req.body.thumbnail_url,
     productType: req.body.productType
   };
 
