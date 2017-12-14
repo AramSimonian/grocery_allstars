@@ -8,16 +8,14 @@
 <ul class="collection">
     <% products.forEach(function(product) { %>
     <li class="collection-item">
-
         <i class="material-icons">local_grocery_store</i>
         <br>
         <span style="color:#26a69a;text-transform: uppercase;"><%= product.attributes.name %></span>
         <br>
         <span class="mdl-list__item-secondary-content">
-    <span class="h1">Expires: <%= product.attributes.expiry %></span>
-      <span class="mdl-list__item-secondary-info">In date</span>
-
-  </span>
+          <span class="h1">Expires: <%= (product.attributes.expiry).getDate() + '-' + (product.attributes.expiry).getMonth() + '-' + (product.attributes.expiry).getFullYear() %></span>
+          <span class="mdl-list__item-secondary-info"><%= Math.ceil((product.attributes.expiry.getTime() - (new Date()))/ (1000*3600*24)) %> day(s)</span>
+        </span>
     </li>
     <% }); %>
 </ul>
