@@ -25,7 +25,6 @@ describe('User Products Unit Tests', () => {
       }).save().then((user) => {
         user.related('products').create(
           { name: 'Test Product',
-            description: 'Test Description',
             barcode: '47569825728357'
           }).yield(user);
         console.log('USER: ', user);
