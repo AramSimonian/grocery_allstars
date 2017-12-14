@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
       table.increments();
       table.string('name').notNullable();
       table.string('description');
-      table.string('barcode').unique();
+      table.string('barcode');
       table.dateTime('expiry');
       table.string('productType');
       table.timestamps();
