@@ -24,7 +24,10 @@ router.post('/create', function (req, res) {
 
   const product = {
     name: req.body.name,
-    barcode: req.body.barcode
+    description: req.body.description,
+    barcode: req.body.barcode,
+    expiry: new Date(req.body.expiry),
+    productType: req.body.productType
   };
 
   bookshelf.transaction(function (t) {

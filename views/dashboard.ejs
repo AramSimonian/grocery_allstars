@@ -1,74 +1,40 @@
+<%+ extend('layout') %>
+<%+ section('content') %>
 
-  <%+ extend('layout') %>
-  <%+ section('content') %>
-
-  <div class="row center">
+<div class="row center">
     <h5 class="header col s12 light">Please scan and enter your groceries </h5>
-  </div>
+</div>
 
-  <div class="container">
-    <div class="section">
-  <form action="/products/create" method="post">
-             <div class="mdl-dialog__content">
-                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                     <input class="mdl-textfield__input" type="text" name="name" id="name">
-                     <label class="mdl-textfield__label" for="name">Name</label>
-                 </div>
-                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                     <input class="mdl-textfield__input" type="text" name="barcode" id="barcode">
-                     <label class="mdl-textfield__label right-align " for="barcode">Barcode</label>
-                 </div>
-
-                 <br><br>
-
-             </div>
-             <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-
-                 <input id="file-upload" type="file" accept="video/*;capture=camcorder"/>
-                 <button type="submit" ata-target="modal1" class="waves-effect waves-light btn modal-trigger">Submit</button>
-                 <button type="button" class=" waves-effect waves-light btn mdl-button mdl-js-button close">Cancel</button>
-                 <label id="view-source" for="file-upload" class="waves-effect waves-light btn-large f-upload mdl-button mdl-js-button right h2">
-                    SCAN
-                        <i class="material-icons right">send</i>
-                 </label>
-             </div>
-
-         </form>
-       </div>
-       </div>
-
-       <a id="view-source" class="show-modal custom-file-upload mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--colored mdl-color-text--white">
-           <i class="material-icons">add</i>
-       </a>
-
-
-       <br><br><br>
-
-
-
-       <!-- Modal Structure -->
 <ul class="collection">
-  <% products.forEach(function(product) { %>
+    <% products.forEach(function(product) { %>
     <li class="collection-item">
 
- <i class="material-icons">local_grocery_store</i>
- <br>
-      <span style="color:#26a69a;text-transform: uppercase;" ><%= product.name %></span>
+        <i class="material-icons">local_grocery_store</i>
+        <br>
+        <span style="color:#26a69a;text-transform: uppercase;"><%= product.attributes.name %></span>
 
+      <span style="color:#26a69a;text-transform: uppercase;" ><%= product.attributes.name %></span>
 
-<br>
-  <span class="mdl-list__item-secondary-content">
-    <span class="h1">Expires: </span>
+        <br>
+        <span class="mdl-list__item-secondary-content">
+    <span class="h1">Expires: <%= product.attributes.expiry %></span>
       <span class="mdl-list__item-secondary-info">In date</span>
 
   </span>
-</li>
-<% }); %>
-  </ul>
+    </li>
+    <% }); %>
+</ul>
 
 <script>
-  console.log("WAAAAAAAAAA")
+  $(document).ready(function () {
+
+
+  });
+
+  var convertDate = function (date) {
+    moment(date).fromNow()
+  }
+
 </script>
 
-
-  <%+ endSection %>
+<%+ endSection %>

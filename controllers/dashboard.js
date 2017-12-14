@@ -5,13 +5,14 @@ var ApiService = require('../services/ApiService').ApiService;
 const productLookup = new ApiService();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', isLoggedIn, function(req, res, next) {
   Product.fetchAll({
     // include: [ models.Task ]
   }).then(function(products) {
     res.render('dashboard', {
       title: 'Enter product details',
-      products: products
+      products: products,
+      currentUser: req.user ? req.user.currentUser: ''
     });
   });
   // res.render('index', { title: 'Express' });
