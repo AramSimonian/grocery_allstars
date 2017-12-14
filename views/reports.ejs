@@ -12,43 +12,35 @@
        </thead>
 
        <tbody>
-         <tr>
-           <td>Alvin</td>
-           <td>Eclair</td>
-           <td>$0.87</td>
-         </tr>
-         <tr>
-           <td>Alan</td>
-           <td>Jellybean</td>
-           <td>$3.76</td>
-         </tr>
-         <tr>
-           <td>Jonathan</td>
-           <td>Lollipop</td>
-           <td>$7.00</td>
-         </tr>
+       <% products.forEach(function(product) { %>
+       <tr>
+           <td><%= product.attributes.name %></td>
+           <td><%= product.attributes.expiry %></td>
+           <td><%= product.attributes.productType %></td>
+       </tr>
+       <% }); %>
        </tbody>
      </table>
 
      <ul class="collection">
-         <% products.forEach(function(product) { %>
-         <li class="collection-item">
+         <!--<% products.forEach(function(product) { %>-->
+         <!--<li class="collection-item">-->
 
-             <i class="material-icons">local_grocery_store</i>
-             <br>
-             <% console.log("thats product:", product)%>
-             <span style="color:#26a69a;text-transform: uppercase;"><%= product.attributes.name %></span>
+             <!--<i class="material-icons">local_grocery_store</i>-->
+             <!--<br>-->
+             <!--<% console.log("thats product:", product)%>-->
+             <!--<span style="color:#26a69a;text-transform: uppercase;"><%= product.attributes.name %></span>-->
 
-           <span style="color:#26a69a;text-transform: uppercase;" ><%= product.attributes.name %></span>
+           <!--<span style="color:#26a69a;text-transform: uppercase;" ><%= product.attributes.name %></span>-->
 
-             <br>
-             <span class="mdl-list__item-secondary-content">
-         <span class="h1">Expires: <%= product.attributes.expiry %></span>
-           <span class="mdl-list__item-secondary-info">In date</span>
+             <!--<br>-->
+             <!--<span class="mdl-list__item-secondary-content">-->
+         <!--<span class="h1">Expires: <%= product.attributes.expiry %></span>-->
+           <!--<span class="mdl-list__item-secondary-info">In date</span>-->
 
-       </span>
-         </li>
-         <% }); %>
+       <!--</span>-->
+         <!--</li>-->
+         <!--<% }); %>-->
      </ul>
 <!-- <div class="row center">
     <h5 class="header col s12 light">Please scan and enter your groceries </h5>
