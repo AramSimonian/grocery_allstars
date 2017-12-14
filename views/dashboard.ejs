@@ -14,17 +14,7 @@
             Expires: <%= (product.attributes.expiry).getDate() + '-' + (product.attributes.expiry).getMonth() + '-' + (product.attributes.expiry).getFullYear() %>
             <span class="mdl-list__item-secondary-info"><%= Math.ceil((product.attributes.expiry.getTime() - (new Date()))/ (1000*3600*24)) %> day(s)</span>
         </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">local_grocery_store</i></a>
-
-
-        <!--<i class="material-icons">local_grocery_store</i>-->
-        <!--<br>-->
-        <!--<span style="color:#26a69a;text-transform: uppercase;"><%= product.attributes.name %></span>-->
-        <!--<br>-->
-        <!--<span class="mdl-list__item-secondary-content">-->
-          <!--<span class="h1">Expires: <%= (product.attributes.expiry).getDate() + '-' + (product.attributes.expiry).getMonth() + '-' + (product.attributes.expiry).getFullYear() %></span>-->
-          <!--<span class="mdl-list__item-secondary-info"><%= Math.ceil((product.attributes.expiry.getTime() - (new Date()))/ (1000*3600*24)) %> day(s)</span>-->
-        <!--</span>-->
+        <!--<a href="#!" class="secondary-content"><i class="material-icons">local_grocery_store</i></a>-->
     </li>
     <% }); %>
 
