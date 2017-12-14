@@ -16,7 +16,7 @@ var index = require('./controllers/index');
 var products = require('./controllers/products');
 var users = require('./controllers/users');
 var dashboard = require('./controllers/dashboard');
-var scanners = require('./controllers/scanners');
+var scans = require('./controllers/scans');
 var auth = require('./controllers/auth');
 var apiService = require('./controllers/apiService');
 
@@ -63,8 +63,8 @@ passport.deserializeUser(function(id, done) {
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/scanners', scanners);
+app.use('/', dashboard);
+app.use('/scans', scans);
 app.use('/products', products);
 app.use('/users', users);
 app.use('/dashboard', dashboard);
