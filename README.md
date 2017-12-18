@@ -12,11 +12,17 @@ The scanner connects to [Tesco's API](https://devportal.tescolabs.com/) using an
 
 ### Built with
 :computer: Node.js
+
 :computer: Express
+
 :computer: Bookshelf
+
 :computer: Postgres
+
 :computer: Mocha
+
 :computer: Chai
+
 :computer: Zombie
 
 ### Install
@@ -27,8 +33,8 @@ This project uses node and npm.
 2. Clone the repo to your computer.
 
 ```sh
-git clone https://github.com/AramSimonian/grocery_allstars
-cd grocery_allstars
+$ git clone https://github.com/AramSimonian/grocery_allstars
+$ cd grocery_allstars
 ```
 
 Install the node dependencies:
@@ -40,7 +46,7 @@ $ npm install
 ### Use app
 
 ```sh
-npm start
+$ npm start
 ```
 visit `localhost:3000`
 
